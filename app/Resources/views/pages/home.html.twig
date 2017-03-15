@@ -1,0 +1,28 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <form action="">
+        <div class="input-field">
+            <input id="search" type="search" required>
+            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+            <i class="material-icons">close</i>
+        </div>
+
+    </form>
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class="fixed-action-btn">
+            <a class="btn-floating btn-large red" href="{{ path('app_business_add') }}">
+                <i class="large material-icons">add</i>
+            </a>
+        </div>
+    {% endif %}
+    {% for business in businesses %}
+        <div>
+            <h2>{{ business.title }}</h2>
+            <ul>
+                <li>Cidade: {{ business.city }} / {{ business.state }}</li>
+                <li>Fone: {{ business.phone }}</li>
+            </ul>
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,5 @@
+services:
+    faker:
+        class: Faker\Generator
+        factory: [Faker\Factory, create]
+        arguments: ["%locale%"]

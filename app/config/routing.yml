@@ -1,0 +1,9 @@
+public_routes:
+    resource: "@AppBundle/Controller/PublicController"
+    type:     annotation
+    prefix: /
+
+private_routes:
+    resource: "@AppBundle/Controller/PrivateController"
+    type: annotation
+    prefix: /admin
