@@ -29,10 +29,18 @@ class BusinessRepository extends \Doctrine\ORM\EntityRepository {
         }
 
         $or = $qb->expr()->orX();
-        $or->add($qb->expr()->like('b.title', '%:terms%'))
-            ->add($qb->expr()->like('b.cep', '%:terms%'));
+        $or->add($qb->expr()->like('b.title', ':like_terms'))
+            ->add($qb->expr()->like('b.zipCode', ':like_terms'))
+            ->add($qb->expr()->like('b.address', ':like_terms'))
+            ->add($qb->expr()->like('b.city', ':like_terms'))
+            ->add($qb->expr()->like('b.state', ':like_terms'))
+            ->add($qb->expr()->like('b.phone', ':like_terms'))
+            ->add($qb->expr()->like('categories.name', ':like_terms'))
+        ;
 
-        $qb->andWhere($or);
+        $qb->andWhere($or)
+            ->setParameter('like_terms', sprintf('%%%s%%',$criteria['terms']))
+        ;
 
         return $qb;
     }

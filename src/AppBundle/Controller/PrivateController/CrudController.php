@@ -4,8 +4,10 @@ namespace AppBundle\Controller\PrivateController;
 
 use AppBundle\Entity\Business;
 use AppBundle\Form\BusinessType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -86,6 +88,35 @@ class CrudController extends Controller {
         return $this->render('admin/business/crud.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/{id}", requirements={"id"="\d+"}, name="app_business_remove")
+     * @Method("DELETE")
+     *
+     * @param Request  $request
+     * @param Business $business
+     * @return RedirectResponse
+     */
+    public function removeAction(Request $request, Business $business){
+        $token = $request->get('_token');
+
+        if(!$this->isCsrfTokenValid('business_remove', $token)){
+            $request->getSession()->getFlashBag()->add('error', 'Token inválido, tente reenviar o formulário.');
+            return $this->redirectToRoute('app_home');
+        }
+
+        try{
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($business);
+            $em->flush();
+        } catch (\Exception $e){
+            $request->getSession()->getFlashBag()->add('error', 'Token inválido, tente reenviar o formulário.');
+            return $this->redirectToRoute('app_home');
+        }
+
+        $request->getSession()->getFlashBag()->add('success', 'Removido com sucesso.');
+        return $this->redirectToRoute('app_home');
     }
 
 }
