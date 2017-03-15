@@ -1,0 +1,60 @@
+{#<ul class="pagination">#}
+    {#<li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>#}
+    {#<li class="active"><a href="#!">1</a></li>#}
+    {#<li class="waves-effect"><a href="#!">2</a></li>#}
+    {#<li class="waves-effect"><a href="#!">3</a></li>#}
+    {#<li class="waves-effect"><a href="#!">4</a></li>#}
+    {#<li class="waves-effect"><a href="#!">5</a></li>#}
+    {#<li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>#}
+{#</ul>#}
+{# default Sliding pagination control implementation #}
+
+{% if pageCount > 1 %}
+    <ul class="pagination">
+        {% if first is defined and current != first %}
+            <li>
+                <a href="{{ path(route, query|merge({(pageParameterName): first})) }}">
+                    <i class="material-icons">skip_previous</i>
+                </a>
+            </li>
+
+        {% endif %}
+
+        {% if previous is defined %}
+            <li>
+                <a href="{{ path(route, query|merge({(pageParameterName): previous})) }}">
+                    <i class="material-icons">chevron_left</i>
+                </a>
+            </li>
+        {% endif %}
+
+        {% for page in pagesInRange %}
+            {% if page != current %}
+                <li class="waves-effect">
+                    <a href="{{ path(route, query|merge({(pageParameterName): page})) }}">{{ page }}</a>
+                </li>
+            {% else %}
+                <li class="active">
+                    <a href="#">{{ page }}</a>
+                </li>
+            {% endif %}
+
+        {% endfor %}
+
+        {% if next is defined %}
+            <li class="next">
+                <a href="{{ path(route, query|merge({(pageParameterName): next})) }}">
+                    <i class="material-icons">chevron_right</i>
+                </a>
+            </li>
+        {% endif %}
+
+        {% if last is defined and current != last %}
+            <li>
+                <a href="{{ path(route, query|merge({(pageParameterName): last})) }}">
+                    <i class="material-icons">skip_next</i>
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+{% endif %}

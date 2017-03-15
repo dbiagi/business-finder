@@ -9,6 +9,7 @@
             </a>
         </div>
     {% endif %}
+    <h3>Empresas encontradas: {{ businesses.totalItemCount }}</h3>
     {% for business in businesses %}
         {# @TODO arrumar a listagem em cards #}
         <div>
@@ -19,4 +20,6 @@
             </ul>
         </div>
     {% endfor %}
+
+    {{ knp_pagination_render(businesses) }}
 {% endblock %}
