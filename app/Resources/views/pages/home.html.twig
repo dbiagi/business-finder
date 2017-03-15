@@ -1,14 +1,7 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <form action="">
-        <div class="input-field">
-            <input id="search" type="search" required>
-            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-            <i class="material-icons">close</i>
-        </div>
-
-    </form>
+    {{ render(controller('AppBundle:PublicController/Index:search', [app.request])) }}
     {% if is_granted('ROLE_ADMIN') %}
         <div class="fixed-action-btn">
             <a class="btn-floating btn-large red" href="{{ path('app_business_add') }}">
@@ -17,6 +10,7 @@
         </div>
     {% endif %}
     {% for business in businesses %}
+        {# @TODO arrumar a listagem em cards #}
         <div>
             <h2>{{ business.title }}</h2>
             <ul>
