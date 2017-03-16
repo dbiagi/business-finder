@@ -37,3 +37,14 @@ composer create-schema
 ```
 bower intall
 ```
+
+## Acesso
+admin:admin
+
+## Explicação
+No escopo diz para eu criar uma área administrativa para inserir e editar os estabelecimentos, porém achei mais simples deixar tudo na home para não precisar criar mais views.
+De todo modo só consegue inserir, editar e pagar lojas quem estiver logado. Então não tem área administrativa mas só o admin pode editar quando estiver logado.
+
+Para inserir um novo estabelecimento clique no + que fica flutuando a direita.
+Para editar ou remover estabelecimentos clique nos botões abaixo dos cards.
+Para mostrar todos os dados clique na imagem ou nos três pontinhos do card.
