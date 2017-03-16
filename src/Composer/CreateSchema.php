@@ -20,14 +20,6 @@ class CreateSchema extends ScriptHandler {
     public static $ACTION = 'create schema';
 
     public static function create(Event $event) {
-        $io = $event->getIO();
-
-        $answer = $io->select('Recriar o banco de dados?', ['Nao', 'Sim'], false);
-
-        if (!$answer) {
-            return $io->write('Pulando criacao do banco de dados.');
-        }
-
         static::dropDatabase($event);
         static::createDatabase($event);
         static::updateSchema($event);
