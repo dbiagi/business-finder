@@ -9,6 +9,8 @@ Business Finder
 | [Doctrine ORM](http://www.doctrine-project.org/) | 2.5.* |
 | [Composer](https://getcomposer.org/)  | 1.2.*  |
 | [Bower](https://bower.io/) | 1.8.* |
+| [Materialize css](http://materializecss.com/) | 0.98 |
+| [jQuery](https://jquery.com/) | 3.1.1 |
 
 ## Instruções para montar o projeto.
 ------------
