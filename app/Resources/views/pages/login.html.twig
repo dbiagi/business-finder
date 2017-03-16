@@ -1,16 +1,20 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <form action="{{ path('app_login') }}" method="post">
-        <div>
-            <input type="text" id="_username" name="_username">
-            <label for="_username">Usuário</label>
-        </div>
-        <div>
-            <input type="password" id="_password" name="_password">
-            <label for="_username">Usuário</label>
-        </div>
+    <div class="row">
+        <div class="col m5 z-depth-3 login-container">
+            <form action="{{ path('app_login') }}" method="post">
+                <div class="input-field">
+                    <input type="text" id="_username" name="_username">
+                    <label for="_username">Usuário</label>
+                </div>
+                <div class="input-field">
+                    <input type="password" id="_password" name="_password">
+                    <label for="_username">Senha</label>
+                </div>
 
-        <button type="submit">Enviar</button>
-    </form>
+                <button class="btn right" type="submit">Entrar</button>
+            </form>
+        </div>
+    </div>
 {% endblock %}

@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Business
@@ -26,6 +27,9 @@ class Business {
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\NotNull()
+     * @Assert\Length(min="3", max="255")
      */
     private $title;
 
@@ -33,6 +37,9 @@ class Business {
      * @var string
      *
      * @ORM\Column(name="phone", type="string", length=16)
+     * @Assert\NotBlank()
+     * @Assert\NotNull()
+     * @Assert\Length(min="9", max="16")
      */
     private $phone;
 
@@ -40,6 +47,9 @@ class Business {
      * @var string
      *
      * @ORM\Column(name="address", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\NotNull()
+     * @Assert\Length(min="3", max="255")
      */
     private $address;
 
@@ -47,6 +57,9 @@ class Business {
      * @var string
      *
      * @ORM\Column(name="zipCode", type="string", length=8)
+     * @Assert\NotBlank()
+     * @Assert\NotNull()
+     * @Assert\Length(min="8", max="8")
      */
     private $zipCode;
 
@@ -54,13 +67,19 @@ class Business {
      * @var string
      *
      * @ORM\Column(name="city", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\NotNull()
+     * @Assert\Length(min="3", max="255")
      */
     private $city;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="uf", type="string", length=2)
+     * @ORM\Column(name="state", type="string", length=2)
+     * @Assert\NotBlank()
+     * @Assert\NotNull()
+     * @Assert\Length(min="2", max="2")
      */
     private $state;
 
@@ -68,6 +87,8 @@ class Business {
      * @var string
      *
      * @ORM\Column(name="description", type="text")
+     * @Assert\NotBlank()
+     * @Assert\NotNull()
      */
     private $description;
 
@@ -75,6 +96,7 @@ class Business {
      * @var ArrayCollection
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\BusinessCategory", inversedBy="businesses")
      * @ORM\JoinTable(name="business_x_business_category")
+     * @Assert\Count(min="1")
      */
     private $categories;
 
@@ -246,7 +268,7 @@ class Business {
     }
 
     /**
-     * @param null $categories
+     * @param ArrayCollection $categories
      * @return Business
      */
     public function setCategories($categories = null) {

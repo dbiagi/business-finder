@@ -47,10 +47,14 @@ class CrudController extends Controller {
                     $em->persist($form->getData());
                     $em->flush();
 
+                    $request->getSession()->getFlashBag()->add('success', 'Loja criada com sucesso.');
+
                     return $this->redirectToRoute('app_home');
                 } catch (\Exception $e) {
                     $request->getSession()->getFlashBag()->add('error', $e->getMessage());
                 }
+            } else{
+                $request->getSession()->getFlashBag()->add('error', 'Foram encontrado alguns dados inválidos no formulário.');
             }
         }
 
@@ -77,6 +81,7 @@ class CrudController extends Controller {
                     $em = $this->getDoctrine()->getManager();
                     $em->persist($form->getData());
                     $em->flush();
+                    $request->getSession()->getFlashBag()->add('success', 'Loja atualizada com sucesso.');
 
                     return $this->redirectToRoute('app_home');
                 } catch (\Exception $e) {

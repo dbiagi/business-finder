@@ -1,5 +1,7 @@
 {% extends 'layout.html.twig' %}
 
+{% form_theme form 'form.html.twig' %}
+
 {% block content %}
     {% if form.vars.data.id is not null %}
         <h3>Editando <strong>{{ form.vars.data.title }}</strong></h3>
