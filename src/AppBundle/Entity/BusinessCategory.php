@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * BusinessCategory
@@ -19,6 +20,7 @@ class BusinessCategory {
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Groups({"elastic"})
      */
     private $id;
 
@@ -26,6 +28,7 @@ class BusinessCategory {
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Groups({"elastic"})
      */
     private $name;
 

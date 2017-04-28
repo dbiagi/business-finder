@@ -18,7 +18,7 @@ framework:
     form:            ~
     csrf_protection: ~
     validation:      { enable_annotations: true }
-    #serializer:      { enable_annotations: true }
+    serializer:      { enable_annotations: true }
     templating:
         engines: ['twig']
     default_locale:  "%locale%"
@@ -67,3 +67,28 @@ swiftmailer:
 knp_paginator:
     template:
         pagination: pagination.html.twig
+
+fos_elastica:
+    serializer: ~
+    clients:
+        default: { host: 192.168.1.246, port: 9200 }
+    indexes:
+        default:
+            index_name: diego_biagi_business_finder
+            types:
+                business:
+                    serializer:
+                        groups: [elastic]
+                    persistence:
+                        driver: orm
+                        model: AppBundle\Entity\Business
+                        provider: ~
+                        finder: ~
+                business_category:
+                    serializer:
+                        groups: [elastic]
+                    persistence:
+                        driver: orm
+                        model: AppBundle\Entity\BusinessCategory
+                        provider: ~
+                        finder: ~

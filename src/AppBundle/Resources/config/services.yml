@@ -1,0 +1,20 @@
+services:
+    app.elastica.connection:
+        class: AppBundle\Elastica\Connection
+        arguments:
+            - "@serializer"
+            - "%elastic_host%"
+            - "%elastic_port%"
+            - "%kernel.root_dir%/../elastic.json"
+            - "%elastic_index_name%"
+
+    app.repository.business:
+        class: Doctrine\ORM\EntityRepository
+        factory: ['@doctrine.orm.entity_manager', getRepository]
+        arguments: [AppBundle\Entity\Business]
+
+    app.repository.elastic.business:
+        class: AppBundle\Repository\BusinessElasticRepository
+        arguments:
+            - "@app.elastica.connection"
+            - "@app.repository.business"
