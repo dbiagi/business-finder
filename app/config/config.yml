@@ -2,11 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
-
-# Put parameters here that don't need to change on each machine where the app is deployed
-# http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
-parameters:
-    locale: pt_BR
+    - { resource: elastic.yml }
 
 framework:
     #esi:             ~
@@ -67,28 +63,3 @@ swiftmailer:
 knp_paginator:
     template:
         pagination: pagination.html.twig
-
-fos_elastica:
-    serializer: ~
-    clients:
-        default: { host: 192.168.1.246, port: 9200 }
-    indexes:
-        default:
-            index_name: diego_biagi_business_finder
-            types:
-                business:
-                    serializer:
-                        groups: [elastic]
-                    persistence:
-                        driver: orm
-                        model: AppBundle\Entity\Business
-                        provider: ~
-                        finder: ~
-                business_category:
-                    serializer:
-                        groups: [elastic]
-                    persistence:
-                        driver: orm
-                        model: AppBundle\Entity\BusinessCategory
-                        provider: ~
-                        finder: ~

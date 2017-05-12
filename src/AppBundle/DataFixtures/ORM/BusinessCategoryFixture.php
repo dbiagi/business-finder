@@ -12,7 +12,8 @@ use Doctrine\Common\Persistence\ObjectManager;
  *
  * @author Diego de Biagi <diegobiagiviana@gmail.com>
  */
-class BusinessCategoryFixture extends AbstractFixture implements OrderedFixtureInterface {
+class BusinessCategoryFixture extends AbstractFixture implements OrderedFixtureInterface
+{
 
     const COUNT = 7;
 
@@ -24,6 +25,8 @@ class BusinessCategoryFixture extends AbstractFixture implements OrderedFixtureI
         'health'             => 'Health',
         'sports'             => 'Sports',
         'travel'             => 'Travel',
+        'culture'            => 'Culture',
+
     ];
 
     /**
@@ -31,7 +34,8 @@ class BusinessCategoryFixture extends AbstractFixture implements OrderedFixtureI
      *
      * @param ObjectManager $manager
      */
-    public function load(ObjectManager $manager) {
+    public function load(ObjectManager $manager)
+    {
 
         foreach (self::CATEGORIES as $slug => $name) {
             $category = new BusinessCategory();
@@ -51,7 +55,8 @@ class BusinessCategoryFixture extends AbstractFixture implements OrderedFixtureI
      *
      * @return integer
      */
-    public function getOrder() {
+    public function getOrder()
+    {
         return 1;
     }
 }

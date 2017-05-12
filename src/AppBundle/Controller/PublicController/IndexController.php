@@ -5,23 +5,23 @@ namespace AppBundle\Controller\PublicController;
 use AppBundle\Form\SearchType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class IndexController extends Controller {
-
+class IndexController extends Controller
+{
     const LIMIT_PER_PAGE = 9;
 
     /**
      * Homepage
      *
-     * @Route("/", name="app_home")
-     *
      * @param Request $request
      * @return Response
+     *
+     * @Route("/", name="app_home")
      */
-    public function indexAction(Request $request) {
+    public function indexAction(Request $request)
+    {
         $criteria = $request->get(SearchType::NAME);
         $page = $request->get('page', 1);
 
@@ -38,7 +38,8 @@ class IndexController extends Controller {
         ]);
     }
 
-    public function searchAction(Request $request) {
+    public function searchAction(Request $request)
+    {
         $data = $request->get(SearchType::NAME);
 
         $form = $this->createForm(SearchType::class, $data);
@@ -49,19 +50,16 @@ class IndexController extends Controller {
     }
 
     /**
-     * @Route("/test")
+     *
      * @param Request $request
-     * @return JsonResponse
+     * @return Response
+     *
+     * @Route("/test")
      */
-    public function testAction(Request $request) {
-        $query = $request->get('q');
+    public function testAction(Request $request)
+    {
+        dump($this->get('app.elastica.connection')->getAggregations());
 
-        $results = $this->get('fos_elastica.finder.default.business')->find($query);
-
-        $json = $this->get('serializer')->serialize($results, 'json', [
-            'groups' => ['elastic'],
-        ]);
-
-        return new JsonResponse($json, Response::HTTP_OK, [], true);
+        return new Response;
     }
 }

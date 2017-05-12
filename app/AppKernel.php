@@ -22,6 +22,8 @@ class AppKernel extends Kernel
 
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
 
+            new JMS\TranslationBundle\JMSTranslationBundle(),
+
             new AppBundle\AppBundle(),
         ];
 

@@ -3,8 +3,10 @@
 namespace AppBundle\Elastica;
 
 use Doctrine\ORM\EntityManager;
+use Elastica\Aggregation\Terms;
 use Elastica\Client;
 use Elastica\Document;
+use Elastica\Query;
 use Elastica\Request;
 use Elastica\Type\Mapping;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -160,5 +162,22 @@ class Connection
 
         return $result;
 
+    }
+
+    /**
+     * @return array
+     */
+    public function getAggregations()
+    {
+        $terms = new Terms('business');
+        $terms->setField('category')
+         ->setSize('20');
+
+        $query = Query::create([])
+            ->addAggregation($terms);
+
+        $index = $this->client->getIndex($this->indexName);
+
+        return $index->search($query)->getAggregations();
     }
 }

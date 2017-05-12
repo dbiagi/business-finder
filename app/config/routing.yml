@@ -7,3 +7,8 @@ private_routes:
     resource: "@AppBundle/Controller/PrivateController"
     type: annotation
     prefix: /admin
+
+JMSTranslationBundle_ui:
+    resource: "@JMSTranslationBundle/Controller"
+    type:     annotation
+    prefix:   /_trans

@@ -39,7 +39,7 @@ class Business {
     /**
      * @var string
      *
-     * @ORM\Column(name="phone", type="string", length=16)
+     * @ORM\Column(name="phone", type="string", length=30)
      * @Assert\NotBlank()
      * @Assert\NotNull()
      * @Assert\Length(min="9", max="16")
