@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+    elasticsearch:
+        build: elasticsearch/
+        volumes:
+            - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+            - es-business_finder:/usr/share/elasticsearch/data
+        ports:
+            - "9200:9200"
+            - "9300:9300"
+
+    db:
+        build: mysql/
+        volumes:
+            - mysql-business_finder:/var/lib/mysql
+        ports:
+            - "3306:3306"
+        env_file:
+            - ./mysql/.env
+volumes:
+    es-business_finder:
+        driver: local
+    mysql-business_finder:
+        driver: local
