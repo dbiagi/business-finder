@@ -9,6 +9,19 @@ services:
         ports:
             - "9200:9200"
             - "9300:9300"
+        networks:
+            - commom
+
+    kibana:
+        build:  kibana/
+        volumes:
+            - ./kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
+        ports:
+            - "5601:5601"
+        depends_on:
+            - elasticsearch
+        networks:
+            - commom
 
     db:
         build: mysql/
@@ -23,3 +36,7 @@ volumes:
         driver: local
     mysql-business_finder:
         driver: local
+
+networks:
+    commom:
+        driver: bridge
