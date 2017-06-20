@@ -3,9 +3,10 @@ version: '2'
 services:
     elasticsearch:
         build: elasticsearch/
+        container_name: bf_elasticsearch
         volumes:
             - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
-            - es-business_finder:/usr/share/elasticsearch/data
+            - bf_elasticsearch:/usr/share/elasticsearch/data
         ports:
             - "9200:9200"
             - "9300:9300"
@@ -14,6 +15,7 @@ services:
 
     kibana:
         build:  kibana/
+        container_name: bf_kibana
         volumes:
             - ./kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
         ports:
@@ -23,18 +25,19 @@ services:
         networks:
             - commom
 
-    db:
+    mysql:
         build: mysql/
+        container_name: bf_mysql
         volumes:
-            - mysql-business_finder:/var/lib/mysql
+            - bf_mysql:/var/lib/mysql
         ports:
             - "3306:3306"
         env_file:
             - ./mysql/.env
 volumes:
-    es-business_finder:
+    bf_elasticsearch:
         driver: local
-    mysql-business_finder:
+    bf_mysql:
         driver: local
 
 networks:
