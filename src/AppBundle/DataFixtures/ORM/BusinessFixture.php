@@ -3,6 +3,7 @@
 namespace AppBundle\DataFixtures\ORM;
 
 use AppBundle\Entity\Business;
+use AppBundle\Entity\Geolocation;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -16,7 +17,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 class BusinessFixture extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
 {
-    const COUNT = 5000;
+    const COUNT = 200;
 
     /** @var ContainerInterface */
     private $container;
@@ -42,7 +43,8 @@ class BusinessFixture extends AbstractFixture implements OrderedFixtureInterface
                 ->setState($faker->stateAbbr)
                 ->setDescription($faker->sentences(rand(10, 20), true))
                 ->setPhone($faker->phoneNumber)
-                ->setZipCode($faker->numerify('########'));
+                ->setZipCode($faker->numerify('########'))
+                ->setLocation(new Geolocation(-22.3225743, -49.056459));
 
             $n = rand(1, 3);
 

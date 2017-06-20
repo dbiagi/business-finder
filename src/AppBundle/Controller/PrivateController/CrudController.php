@@ -54,20 +54,21 @@ class CrudController extends Controller
 
                     $this->get('app.elastica.connection')->addDocument('business', $business);
 
-                    $request->getSession()->getFlashBag()->add('success', 'Loja criada com sucesso.');
+                    $this->addFlash('success', 'Loja criada com sucesso.');
 
                     return $this->redirectToRoute('app_home');
                 } catch (\Exception $e) {
-                    $request->getSession()->getFlashBag()->add('error', $e->getMessage());
+                    $this->addFlash('error', $e->getMessage());
                 }
             } else {
-                $request->getSession()->getFlashBag()->add('error',
+                $this->addFlash('error',
                     'Foram encontrado alguns dados inválidos no formulário.');
             }
         }
 
         return $this->render('admin/business/crud.html.twig', [
             'form' => $form->createView(),
+            'map'  => $this->get('app.map_factory')->createMap(),
         ]);
     }
 
@@ -91,15 +92,14 @@ class CrudController extends Controller
                     $em->persist($business);
                     $em->flush();
 
-                    $this->get('app.elastica.connection')->addDocument('business', $business);
-
-                    $request->getSession()->getFlashBag()->add('success', 'Loja atualizada com sucesso.');
+                    $this->addFlash('success', 'Loja atualizada com sucesso.');
 
                     return $this->redirectToRoute('app_home');
                 } catch (\Exception $e) {
-                    $request->getSession()->getFlashBag()->add('error', $e->getMessage());
+                    $this->addFlash('error', $e->getMessage());
                 }
             }
+
         }
 
         return $this->render('admin/business/crud.html.twig', [
@@ -120,24 +120,23 @@ class CrudController extends Controller
         $token = $request->get('_token');
 
         if (!$this->isCsrfTokenValid('business_remove', $token)) {
-            $request->getSession()->getFlashBag()->add('error', 'Token inválido, tente reenviar o formulário.');
+            $this->addFlash('error', 'Token inválido, tente reenviar o formulário.');
 
             return $this->redirectToRoute('app_home');
         }
 
         try {
-            $this->get('app.elastica.connection')->deleteDocument('business', $business);
             $em = $this->getDoctrine()->getManager();
             $em->remove($business);
             $em->flush();
 
         } catch (\Exception $e) {
-            $request->getSession()->getFlashBag()->add('error', $e->getMessage());
+            $this->addFlash('error', $e->getMessage());
 
             return $this->redirectToRoute('app_home');
         }
 
-        $request->getSession()->getFlashBag()->add('success', 'Removido com sucesso.');
+        $this->addFlash('success', 'Removido com sucesso.');
 
         return $this->redirectToRoute('app_home');
     }

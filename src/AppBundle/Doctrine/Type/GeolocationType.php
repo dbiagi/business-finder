@@ -3,8 +3,8 @@
 namespace AppBundle\Doctrine\Type;
 
 use AppBundle\Entity\Geolocation;
-use Doctrine\DBAL\Types\Type;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
+use Doctrine\DBAL\Types\Type;
 
 class GeolocationType extends Type
 {
@@ -42,7 +42,7 @@ class GeolocationType extends Type
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
     {
         if ($value instanceof Geolocation) {
-            $value = sprintf('POINT(%F, %F)', $value->getLongitude(), $value->getLatitude());
+            $value = sprintf('POINT(%f %f)', $value->getLongitude(), $value->getLatitude());
         }
 
         return $value;

@@ -2,18 +2,23 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Annotation\Document;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Business
+ * Business entity
  *
+ * @Document(type="business")
  * @ORM\Table(name="business")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\BusinessRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Business {
+
+    use Datable;
 
     /**
      * @var int
@@ -105,6 +110,12 @@ class Business {
      * @Groups({"elastic"})
      */
     private $categories;
+
+    /**
+     * @var Geolocation
+     * @ORM\Column(type="geolocation", nullable=true)
+     */
+    private $location;
 
     function __construct() {
         $this->categories = new ArrayCollection();
@@ -274,16 +285,6 @@ class Business {
     }
 
     /**
-     * @param ArrayCollection $categories
-     * @return Business
-     */
-    public function setCategories($categories = null) {
-        $this->categories = $categories;
-
-        return $this;
-    }
-
-    /**
      * @param BusinessCategory $category
      * @return Business
      */
@@ -300,6 +301,36 @@ class Business {
      */
     public function getCategories() {
         return $this->categories;
+    }
+
+    /**
+     * @param ArrayCollection $categories
+     * @return Business
+     */
+    public function setCategories($categories = null)
+    {
+        $this->categories = $categories;
+
+        return $this;
+    }
+
+    /**
+     * @return Geolocation
+     */
+    public function getLocation()
+    {
+        return $this->location;
+    }
+
+    /**
+     * @param Geolocation $location
+     * @return Business
+     */
+    public function setLocation($location)
+    {
+        $this->location = $location;
+
+        return $this;
     }
 }
 

@@ -22,5 +22,6 @@ parameters:
     elastic_port: ~
     elastic_index_name: diego_biagi_business_finder
 
+    google_api_key: ~
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt

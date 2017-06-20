@@ -2,7 +2,6 @@
 
 namespace AppBundle\DataFixtures\ORM;
 
-use AppBundle\Entity\BusinessCategory;
 use AppBundle\Entity\Event;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
@@ -17,7 +16,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 class EventFixture extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
 {
-    const COUNT = 1000;
+    const COUNT = 200;
 
     /** @var ContainerInterface */
     private $container;

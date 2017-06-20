@@ -18,3 +18,18 @@ services:
         arguments:
             - "@app.elastica.connection"
             - "@app.repository.business"
+
+    app.event_listener.elasticsearch:
+        class: AppBundle\EventListener\ElasticsearchEntityListener
+        arguments:
+            - "@app.elastica.object_persister_factory"
+        tags:
+            - { name: doctrine.event_subscriber, entity_manager: default }
+
+    app.elastica.object_persister_factory:
+        class: AppBundle\Elastica\ObjectPersisterFactory
+        arguments: ['@service_container']
+
+    app.map_factory:
+        class: AppBundle\Map\MapFactory
+

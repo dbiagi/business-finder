@@ -2,7 +2,6 @@
 
 namespace AppBundle\Elastica;
 
-use Doctrine\ORM\EntityManager;
 use Elastica\Aggregation\Terms;
 use Elastica\Client;
 use Elastica\Document;
@@ -11,6 +10,11 @@ use Elastica\Request;
 use Elastica\Type\Mapping;
 use Symfony\Component\Serializer\SerializerInterface;
 
+/**
+ * Class Connection
+ * @package AppBundle\Elastica
+ * @deprecated This class is deprecated
+ */
 class Connection
 {
     /** @var SerializerInterface */

@@ -2,12 +2,14 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Annotation\Document;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * Event
+ * Event entity
  *
+ * @Document(type="event")
  * @ORM\Table(name="event")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EventRepository")
  */
@@ -82,6 +84,16 @@ class Event
     }
 
     /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
      * Set title
      *
      * @param string $title
@@ -96,13 +108,13 @@ class Event
     }
 
     /**
-     * Get title
+     * Get description
      *
      * @return string
      */
-    public function getTitle()
+    public function getDescription()
     {
-        return $this->title;
+        return $this->description;
     }
 
     /**
@@ -120,13 +132,13 @@ class Event
     }
 
     /**
-     * Get description
+     * Get startAt
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getDescription()
+    public function getStartAt()
     {
-        return $this->description;
+        return $this->startAt;
     }
 
     /**
@@ -144,13 +156,13 @@ class Event
     }
 
     /**
-     * Get startAt
+     * Get endAt
      *
      * @return \DateTime
      */
-    public function getStartAt()
+    public function getEndAt()
     {
-        return $this->startAt;
+        return $this->endAt;
     }
 
     /**
@@ -168,13 +180,13 @@ class Event
     }
 
     /**
-     * Get endAt
+     * Get recurrent
      *
-     * @return \DateTime
+     * @return bool
      */
-    public function getEndAt()
+    public function isRecurrent()
     {
-        return $this->endAt;
+        return $this->recurrent;
     }
 
     /**
@@ -189,16 +201,6 @@ class Event
         $this->recurrent = $recurrent;
 
         return $this;
-    }
-
-    /**
-     * Get recurrent
-     *
-     * @return bool
-     */
-    public function isRecurrent()
-    {
-        return $this->recurrent;
     }
 
     /**

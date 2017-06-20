@@ -25,16 +25,13 @@ class IndexController extends Controller
         $criteria = $request->get(SearchType::NAME);
         $page = $request->get('page', 1);
 
-        $businessRepo = $this->get('app.repository.elastic.business');
-
-        $businessCategoryRepo = $this->getDoctrine()->getRepository('AppBundle:BusinessCategory');
+        $entities = $this->get('app.repository.business')->findByCriteria($criteria);
 
         $businesses = $this->get('knp_paginator')
-            ->paginate($businessRepo->findByCriteria($criteria), $page, self::LIMIT_PER_PAGE);
+            ->paginate($entities, $page, self::LIMIT_PER_PAGE);
 
         return $this->render('pages/home.html.twig', [
             'businesses' => $businesses,
-            'categories' => $businessCategoryRepo->findAll(),
         ]);
     }
 
