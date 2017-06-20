@@ -47,8 +47,11 @@ doctrine:
         user:     "%database_user%"
         password: "%database_password%"
         charset:  UTF8
+        server_version: 5.7
         types:
             geolocation: AppBundle\Doctrine\Type\GeolocationType
+        mapping_types:
+            point: geolocation
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
@@ -65,3 +68,7 @@ swiftmailer:
 knp_paginator:
     template:
         pagination: pagination.html.twig
+
+ivory_google_map:
+    map:
+        api_key: "%google_api_key%"
