@@ -45,18 +45,4 @@ class IndexController extends Controller
             'form' => $form->createView(),
         ]);
     }
-
-    /**
-     *
-     * @param Request $request
-     * @return Response
-     *
-     * @Route("/test")
-     */
-    public function testAction(Request $request)
-    {
-        dump($this->get('app.elastica.connection')->getAggregations());
-
-        return new Response;
-    }
 }

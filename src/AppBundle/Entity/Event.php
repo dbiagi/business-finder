@@ -68,7 +68,7 @@ class Event
      * @var Business
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Business")
-     * @ORM\JoinColumn(fieldName="business_id", referencedColumnName="id")
+     * @ORM\JoinColumn(fieldName="business_id", referencedColumnName="id", onDelete="cascade")
      * @Groups({"elastic"})
      */
     private $business;
@@ -222,4 +222,3 @@ class Event
         return $this;
     }
 }
-
