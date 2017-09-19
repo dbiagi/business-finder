@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Provider;
+namespace AppBundle\Security;
 
 use Symfony\Component\Security\Core\User\UserInterface;
 

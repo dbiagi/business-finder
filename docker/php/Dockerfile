@@ -35,11 +35,11 @@ RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-di
     && docker-php-ext-install gd
 
 # Install xdebug
-RUN pecl install xdebug
+RUN pecl install xdebug && docker-php-ext-enable xdebug
 
 RUN mkdir /var/www/.composer/cache -p
 
-RUN usermod -u 1001 www-data \
+RUN usermod -u 1000 www-data \
     && chown www-data:www-data /var/www -R
 
 USER www-data
