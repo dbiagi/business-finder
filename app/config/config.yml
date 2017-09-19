@@ -19,7 +19,6 @@ framework:
         engines: ['twig']
     default_locale:  "%locale%"
     trusted_hosts:   ~
-    trusted_proxies: ~
     session:
         # http://symfony.com/doc/current/reference/configuration/framework.html#handler-id
         handler_id:  session.handler.native_file
@@ -47,7 +46,7 @@ doctrine:
         user:     "%database_user%"
         password: "%database_password%"
         charset:  UTF8
-        server_version: 5.7
+        server_version: 10.3
         types:
             geolocation: AppBundle\Doctrine\Type\GeolocationType
         mapping_types:
