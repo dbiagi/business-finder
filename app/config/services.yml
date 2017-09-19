@@ -1,5 +1,20 @@
 services:
-    faker:
-        class: Faker\Generator
-        factory: [Faker\Factory, create]
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    Faker\Generator:
+        factory: 'Faker\Factory::create'
         arguments: ["%locale%"]
+        public: true
+
+    AppBundle\:
+        resource: '../../src/AppBundle/*'
+        exclude: '../../src/AppBundle/{Entity,Repository}'
+
+    AppBundle\Controller\:
+        resource: '../../src/AppBundle/Controller'
+        public: true
+        tags: ['controller.service_arguments']
+
