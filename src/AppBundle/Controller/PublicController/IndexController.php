@@ -24,7 +24,7 @@ class IndexController extends Controller
      * @param PaginatorInterface $paginator
      * @return Response
      *
-     * @Route("/", name="app_home")
+     * @Route("/", name="home")
      */
     public function indexAction(Request $request, EntityManagerInterface $em, PaginatorInterface $paginator)
     {

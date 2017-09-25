@@ -28,7 +28,7 @@ class CrudController extends Controller
      */
     public function indexAction()
     {
-        return $this->redirectToRoute('app_home');
+        return $this->redirectToRoute('home');
     }
 
     /**
@@ -56,7 +56,7 @@ class CrudController extends Controller
 
                     $this->addFlash('success', 'Loja criada com sucesso.');
 
-                    return $this->redirectToRoute('app_home');
+                    return $this->redirectToRoute('home');
                 } catch (\Exception $e) {
                     $this->addFlash('error', $e->getMessage());
                 }
@@ -94,7 +94,7 @@ class CrudController extends Controller
 
                     $this->addFlash('success', 'Loja atualizada com sucesso.');
 
-                    return $this->redirectToRoute('app_home');
+                    return $this->redirectToRoute('home');
                 } catch (\Exception $e) {
                     $this->addFlash('error', $e->getMessage());
                 }
@@ -122,7 +122,7 @@ class CrudController extends Controller
         if (!$this->isCsrfTokenValid('business_remove', $token)) {
             $this->addFlash('error', 'Token inválido, tente reenviar o formulário.');
 
-            return $this->redirectToRoute('app_home');
+            return $this->redirectToRoute('home');
         }
 
         try {
@@ -133,12 +133,12 @@ class CrudController extends Controller
         } catch (\Exception $e) {
             $this->addFlash('error', $e->getMessage());
 
-            return $this->redirectToRoute('app_home');
+            return $this->redirectToRoute('home');
         }
 
         $this->addFlash('success', 'Removido com sucesso.');
 
-        return $this->redirectToRoute('app_home');
+        return $this->redirectToRoute('home');
     }
 
 }

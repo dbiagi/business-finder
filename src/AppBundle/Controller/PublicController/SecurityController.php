@@ -11,7 +11,7 @@ class SecurityController extends Controller {
     /**
      * Página de login
      *
-     * @Route("/login", name="app_login")
+     * @Route("/login", name="login")
      *
      * @return Response
      */
@@ -19,19 +19,10 @@ class SecurityController extends Controller {
         $user = $this->getUser();
 
         if ($user) {
-            return $this->redirectToRoute('app_home');
+            return $this->redirectToRoute('home');
         }
 
         return $this->render('pages/login.html.twig');
     }
 
-    /**
-     * Apenas declarando a rota de logout, o symfony que vai manipular essa rota
-     * @Route("/logout", name="app_logout")
-     *
-     * @throws \Exception
-     */
-    public function logoutAction() {
-        throw new \Exception('Not implemented');
-    }
 }
