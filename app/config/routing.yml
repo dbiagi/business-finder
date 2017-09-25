@@ -12,3 +12,7 @@ JMSTranslationBundle_ui:
     resource: "@JMSTranslationBundle/Controller"
     type:     annotation
     prefix:   /_trans
+
+# Declaring just to prevent 404s
+logout:
+    path: /logout
