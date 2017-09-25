@@ -2,14 +2,12 @@
 
 namespace AppBundle\Entity;
 
-use AppBundle\Annotation\Document;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Event entity
  *
- * @Document(type="event")
  * @ORM\Table(name="event")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EventRepository")
  */
