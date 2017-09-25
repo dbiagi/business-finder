@@ -117,6 +117,13 @@ class Business {
      */
     private $location;
 
+    /**
+     * @var boolean
+     * @ORM\Column(type="boolean")
+     * @Groups({"elastic"})
+     */
+    private $featured = false;
+
     function __construct() {
         $this->categories = new ArrayCollection();
     }
@@ -329,6 +336,25 @@ class Business {
     public function setLocation($location)
     {
         $this->location = $location;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isFeatured(): bool
+    {
+        return $this->featured;
+    }
+
+    /**
+     * @param bool $featured
+     * @return Business
+     */
+    public function setFeatured(bool $featured)
+    {
+        $this->featured = $featured;
 
         return $this;
     }

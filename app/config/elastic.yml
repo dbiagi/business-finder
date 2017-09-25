@@ -14,6 +14,7 @@ fos_elastica:
                         model: AppBundle\Entity\Business
                         provider: ~
                         finder: ~
+                        repository: AppBundle\Repository\Elasticsearch\BusinessElasticRepository
                 business_category:
                     serializer:
                         groups: [elastic]

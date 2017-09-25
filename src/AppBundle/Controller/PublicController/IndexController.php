@@ -2,7 +2,9 @@
 
 namespace AppBundle\Controller\PublicController;
 
+use AppBundle\Entity\Business;
 use AppBundle\Form\SearchType;
+use AppBundle\Repository\Elasticsearch\BusinessElasticRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -21,14 +23,22 @@ class IndexController extends Controller
      * @param EntityManagerInterface $em
      * @param PaginatorInterface $paginator
      * @return Response
+     *
      * @Route("/", name="app_home")
      */
     public function indexAction(Request $request, EntityManagerInterface $em, PaginatorInterface $paginator)
     {
-        $criteria = $request->get(SearchType::NAME);
+        $keywords = $request->get(SearchType::NAME);
         $page = $request->get('page', 1);
 
-        $entities = $em->getRepository('AppBundle:Business')->findByCriteria($criteria);
+        /** @var BusinessElasticRepository $repo */
+        $repo = $this->get('fos_elastica.manager')->getRepository(Business::class);
+
+        if($keywords) {
+            $entities = $repo->findByKeywords($keywords);
+        } else {
+            $entities = $repo->findFeatured();
+        }
 
         $businesses = $paginator->paginate($entities, $page, self::LIMIT_PER_PAGE);
 
