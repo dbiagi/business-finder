@@ -5,11 +5,15 @@ namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Doctrine\ORM\Mapping\UniqueConstraint;
 
 /**
  * BusinessCategory
  *
- * @ORM\Table(name="category")
+ * @ORM\Table(
+ *     name="category",
+ *     uniqueConstraints={@UniqueConstraint(name="unique_category", columns={"slug", "module"})}
+ * )
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CategoryRepository")
  */
 class Category {
@@ -35,7 +39,7 @@ class Category {
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255, unique=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $slug;
 
@@ -125,5 +129,9 @@ class Category {
         return $this;
     }
 
+    public function __toString()
+    {
+        return $this->name;
+    }
 }
 

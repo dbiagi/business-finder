@@ -1,0 +1,10 @@
+AppBundle\Entity\Business:
+    business{1..100}:
+        title: '<company()>'
+        phone: '<phoneNumber()>'
+        address: '<streetAddress()>'
+        zipCode: '<numerify("17######")>'
+        city: '<city()>'
+        state: 'AA'
+        featured: '50%? true: false'
+        description: '<sentence(10)>'
