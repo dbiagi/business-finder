@@ -44,4 +44,8 @@ RUN usermod -u 1000 www-data \
 
 USER www-data
 
+# @TODO Create bash_aliases file
 RUN echo 'alias s3="php bin/console"' >> ~/.bashrc
+
+# allow debug console commands
+RUN export PHP_IDE_CONFIG="serverName=docker"

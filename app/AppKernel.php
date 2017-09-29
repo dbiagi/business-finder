@@ -37,7 +37,9 @@ class AppKernel extends Kernel
                 new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle(),
                 new Sensio\Bundle\DistributionBundle\SensioDistributionBundle(),
                 new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle(),
-                new Symfony\Bundle\WebServerBundle\WebServerBundle(),
+                new Nelmio\Alice\Bridge\Symfony\NelmioAliceBundle(),
+                new Fidry\AliceDataFixtures\Bridge\Symfony\FidryAliceDataFixturesBundle(),
+                new Hautelook\AliceBundle\HautelookAliceBundle(),
             ]);
         }
 
