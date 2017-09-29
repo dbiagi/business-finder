@@ -1,0 +1,13 @@
+AppBundle\Entity\Category:
+    category (template):
+        name: '<ucwords(<current()>)>'
+        slug: '<current()>'
+
+    business_category_{auto, turism, food, health, entertainment, culture} (extends category):
+        module: 'business'
+
+    event_category_{food, culture, travel, business} (extends category):
+        module: 'event'
+
+    deal_category_{food, culture, travel} (extends category):
+        module: 'deal'
