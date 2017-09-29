@@ -31,7 +31,7 @@ class BusinessFixture extends AbstractFixture implements OrderedFixtureInterface
     {
         $faker = $this->container->get('faker');
 
-        $slugs = array_keys(BusinessCategoryFixture::CATEGORIES);
+        $slugs = array_keys(CategoryFixture::CATEGORIES);
 
         $buffer = 1;
 

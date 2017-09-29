@@ -2,7 +2,7 @@
 
 namespace AppBundle\DataFixtures\ORM;
 
-use AppBundle\Entity\BusinessCategory;
+use AppBundle\Entity\Category;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -12,7 +12,7 @@ use Doctrine\Common\Persistence\ObjectManager;
  *
  * @author Diego de Biagi <diegobiagiviana@gmail.com>
  */
-class BusinessCategoryFixture extends AbstractFixture implements OrderedFixtureInterface
+class CategoryFixture extends AbstractFixture implements OrderedFixtureInterface
 {
 
     const COUNT = 7;
@@ -38,7 +38,7 @@ class BusinessCategoryFixture extends AbstractFixture implements OrderedFixtureI
     {
 
         foreach (self::CATEGORIES as $slug => $name) {
-            $category = new BusinessCategory();
+            $category = new Category();
             $category->setName($name)
                 ->setSlug($slug);
 

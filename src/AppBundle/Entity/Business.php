@@ -2,7 +2,6 @@
 
 namespace AppBundle\Entity;
 
-use AppBundle\Annotation\Document;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -11,12 +10,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Business entity
  *
- * @Document(type="business")
  * @ORM\Table(name="business")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\BusinessRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class Business {
+class Business
+{
 
     use Datable;
 
@@ -104,8 +103,8 @@ class Business {
 
     /**
      * @var ArrayCollection
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\BusinessCategory", inversedBy="businesses")
-     * @ORM\JoinTable(name="business_x_business_category")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Category")
+     * @ORM\JoinTable(name="business_x_category")
      * @Assert\Count(min="1")
      * @Groups({"elastic"})
      */
@@ -124,7 +123,8 @@ class Business {
      */
     private $featured = false;
 
-    function __construct() {
+    function __construct()
+    {
         $this->categories = new ArrayCollection();
     }
 
@@ -133,7 +133,8 @@ class Business {
      *
      * @return int
      */
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -142,7 +143,8 @@ class Business {
      *
      * @return string
      */
-    public function getTitle() {
+    public function getTitle()
+    {
         return $this->title;
     }
 
@@ -153,7 +155,8 @@ class Business {
      *
      * @return Business
      */
-    public function setTitle($title) {
+    public function setTitle($title)
+    {
         $this->title = $title;
 
         return $this;
@@ -164,7 +167,8 @@ class Business {
      *
      * @return string
      */
-    public function getPhone() {
+    public function getPhone()
+    {
         return $this->phone;
     }
 
@@ -175,7 +179,8 @@ class Business {
      *
      * @return Business
      */
-    public function setPhone($phone) {
+    public function setPhone($phone)
+    {
         $this->phone = $phone;
 
         return $this;
@@ -186,7 +191,8 @@ class Business {
      *
      * @return string
      */
-    public function getAddress() {
+    public function getAddress()
+    {
         return $this->address;
     }
 
@@ -197,7 +203,8 @@ class Business {
      *
      * @return Business
      */
-    public function setAddress($address) {
+    public function setAddress($address)
+    {
         $this->address = $address;
 
         return $this;
@@ -208,7 +215,8 @@ class Business {
      *
      * @return string
      */
-    public function getZipCode() {
+    public function getZipCode()
+    {
         return $this->zipCode;
     }
 
@@ -219,7 +227,8 @@ class Business {
      *
      * @return Business
      */
-    public function setZipCode($zipCode) {
+    public function setZipCode($zipCode)
+    {
         $this->zipCode = $zipCode;
 
         return $this;
@@ -230,7 +239,8 @@ class Business {
      *
      * @return string
      */
-    public function getCity() {
+    public function getCity()
+    {
         return $this->city;
     }
 
@@ -241,7 +251,8 @@ class Business {
      *
      * @return Business
      */
-    public function setCity($city) {
+    public function setCity($city)
+    {
         $this->city = $city;
 
         return $this;
@@ -252,7 +263,8 @@ class Business {
      *
      * @return string
      */
-    public function getState() {
+    public function getState()
+    {
         return $this->state;
     }
 
@@ -263,7 +275,8 @@ class Business {
      *
      * @return Business
      */
-    public function setState($state) {
+    public function setState($state)
+    {
         $this->state = $state;
 
         return $this;
@@ -274,7 +287,8 @@ class Business {
      *
      * @return string
      */
-    public function getDescription() {
+    public function getDescription()
+    {
         return $this->description;
     }
 
@@ -285,18 +299,20 @@ class Business {
      *
      * @return Business
      */
-    public function setDescription($description) {
+    public function setDescription($description)
+    {
         $this->description = $description;
 
         return $this;
     }
 
     /**
-     * @param BusinessCategory $category
+     * @param Category $category
      * @return Business
      */
-    public function addCategory(BusinessCategory $category) {
-        if(!$this->categories->contains($category)){
+    public function addCategory(Category $category)
+    {
+        if (!$this->categories->contains($category)) {
             $this->categories[] = $category;
         }
 
@@ -306,7 +322,8 @@ class Business {
     /**
      * @return ArrayCollection
      */
-    public function getCategories() {
+    public function getCategories()
+    {
         return $this->categories;
     }
 

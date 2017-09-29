@@ -5,16 +5,16 @@
         <nav>
             <div class="nav-wrapper">
                 <ul id="nav-mobile" class="left">
-                    <li><a href="{{ path('app_home') }}">{{ project_name }}</a></li>
+                    <li><a href="{{ path('home') }}">{{ project_name }}</a></li>
                     {% if is_granted('ROLE_USER') %}
                         <li>Olá, {{ app.user.username }}</li>
                         <li>
-                            <a href="{{ path('app_logout') }}" title="Sair">
+                            <a href="{{ path('logout') }}" title="Sair">
                                 <i class="material-icons">input</i>
                             </a>
                         </li>
                     {% else %}
-                        <li><a href="{{ path('app_login') }}">Login</a></li>
+                        <li><a href="{{ path('login') }}">Login</a></li>
                     {% endif %}
                 </ul>
             </div>
@@ -33,33 +33,25 @@
         {% endblock %}
 
 
-        {% block content %}{% endblock %}
+        {% block tabs %}
+            {% set route = app.request.attributes.get('_route') %}
+            <div class="row">
+                <div class="col s12">
+                    <div class="tabs">
+                        <div class="tab col s2">
+                            <a class="{{ route == 'listings_home' ? 'active' : '' }}" href="#">{{ 'Listings' | trans }}</a>
+                        </div>
+                        <div class="tab col s2">
+                            <a class="{{ route == 'events_home' ? 'active' : '' }}" href="#">{{ 'Events' | trans }}</a>
+                        </div>
+                        <div class="tab col s2">
+                            <a class="{{ route == 'deals_home' ? 'active' : '' }}" href="#">{{ 'Deals' | trans }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
 
-        {#<footer class="page-footer example">#}
-            {#<div class="container">#}
-                {#<div class="row">#}
-                    {#<div class="col l6 s12">#}
-                        {#<h5><a class="white-text" href="{{ path('app_home') }}">{{ project_name }}</a></h5>#}
-                        {#<p class="grey-text text-lighten-4">#}
-                            {#Cadastro de empresas e listagem de empresas por categoria#}
-                        {#</p>#}
-                    {#</div>#}
-                    {#<div class="col l4 offset-l2 s12">#}
-                        {#<h5 class="white-text">Links</h5>#}
-                        {#<ul>#}
-                            {#<li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>#}
-                            {#<li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>#}
-                            {#<li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>#}
-                            {#<li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>#}
-                        {#</ul>#}
-                    {#</div>#}
-                {#</div>#}
-            {#</div>#}
-            {#<div class="footer-copyright">#}
-                {#<div class="container">#}
-                    {#Desenvolvido por: Diego de Biagi#}
-                    {#<a class="grey-text text-lighten-4 right" href="https://github.com/dbiagi">Github</a></div>#}
-            {#</div>#}
-        {#</footer>#}
+        {% block content %}{% endblock %}
     </div>
 {% endblock %}

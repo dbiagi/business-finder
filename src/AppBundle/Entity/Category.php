@@ -9,10 +9,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * BusinessCategory
  *
- * @ORM\Table(name="business_category")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\BusinessCategoryRepository")
+ * @ORM\Table(name="category")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CategoryRepository")
  */
-class BusinessCategory {
+class Category {
 
     /**
      * @var int
@@ -27,7 +27,7 @@ class BusinessCategory {
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(type="string", length=255)
      * @Groups({"elastic"})
      */
     private $name;
@@ -35,15 +35,15 @@ class BusinessCategory {
     /**
      * @var string
      *
-     * @ORM\Column(name="slug", type="string", length=255, unique=true)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $slug;
 
     /**
-     * @var ArrayCollection
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Business", mappedBy="categories")
+     * @var string
+     * @ORM\Column(type="string", length=100)
      */
-    private $businesses;
+    private $module;
 
     function __construct() {
         $this->businesses = new ArrayCollection();
@@ -72,7 +72,7 @@ class BusinessCategory {
      *
      * @param string $name
      *
-     * @return BusinessCategory
+     * @return Category
      */
     public function setName($name) {
         $this->name = $name;
@@ -94,7 +94,7 @@ class BusinessCategory {
      *
      * @param string $slug
      *
-     * @return BusinessCategory
+     * @return Category
      */
     public function setSlug($slug) {
         $this->slug = $slug;
@@ -103,12 +103,27 @@ class BusinessCategory {
     }
 
     /**
-     * Get businesses
+     * Get module
      *
-     * @return ArrayCollection
+     * @return string
      */
-    public function getBusinesses() {
-        return $this->businesses;
+    public function getModule(): string
+    {
+        return $this->module;
     }
+
+    /**
+     * Set module
+     *
+     * @param string $module
+     * @return Category
+     */
+    public function setModule(string $module)
+    {
+        $this->module = $module;
+
+        return $this;
+    }
+
 }
 

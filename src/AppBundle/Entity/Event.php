@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Event entity
@@ -63,13 +64,18 @@ class Event
     private $recurrent;
 
     /**
-     * @var Business
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Business")
-     * @ORM\JoinColumn(fieldName="business_id", referencedColumnName="id", onDelete="cascade")
-     * @Groups({"elastic"})
+     * @var Category
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Category")
+     * @ORM\JoinTable(name="event_x_category")
+     * @Assert\Count(min="1")
      */
-    private $business;
+    private $category;
+
+    /**
+     * @var Geolocation
+     * @ORM\Column(type="geolocation", nullable=true)
+     */
+    private $location;
 
     /**
      * Get id
@@ -202,20 +208,47 @@ class Event
     }
 
     /**
-     * @return Business
+     * Get category
+     *
+     * @return Category
      */
-    public function getBusiness()
+    public function getCategory(): Category
     {
-        return $this->business;
+        return $this->category;
     }
 
     /**
-     * @param Business $business
+     * Set category
+     *
+     * @param Category $category
      * @return Event
      */
-    public function setBusiness($business)
+    public function setCategory(Category $category)
     {
-        $this->business = $business;
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get location
+     *
+     * @return Geolocation
+     */
+    public function getLocation(): Geolocation
+    {
+        return $this->location;
+    }
+
+    /**
+     * Set location
+     *
+     * @param Geolocation $location
+     * @return Event
+     */
+    public function setLocation(Geolocation $location)
+    {
+        $this->location = $location;
 
         return $this;
     }
