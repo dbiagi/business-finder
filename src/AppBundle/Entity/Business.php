@@ -313,7 +313,7 @@ class Business
     public function addCategory(Category $category)
     {
         if (!$this->categories->contains($category)) {
-            $this->categories[] = $category;
+            $this->categories->add($category);
         }
 
         return $this;

@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -64,7 +65,7 @@ class Event
     private $recurrent;
 
     /**
-     * @var Category
+     * @var ArrayCollection
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Category")
      * @ORM\JoinTable(name="event_x_category")
      * @Assert\Count(min="1")
@@ -76,6 +77,11 @@ class Event
      * @ORM\Column(type="geolocation", nullable=true)
      */
     private $location;
+
+    public function __construct()
+    {
+        $this->category = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -226,6 +232,21 @@ class Event
     public function setCategory(Category $category)
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Add a category
+     *
+     * @param Category $category
+     * @return $this
+     */
+    public function addCategory(Category $category): Event
+    {
+        if (!$this->category->contains($category)) {
+            $this->category->add($category);
+        }
 
         return $this;
     }

@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Deal
@@ -13,6 +14,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Deal
 {
+    const DISCOUNT_VALUE = 'value';
+
+    const DISCOUNT_PERCENT = 'percent';
+
+    const DISCOUNT_CUSTOM_VALUE = 'custom';
+
     /**
      * @var int
      *
@@ -59,10 +66,17 @@ class Deal
 
     /**
      * @var ArrayCollection
+     *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Category")
      * @ORM\JoinTable(name="deal_x_category")
+     * @Assert\Count(min="1")
      */
     private $category;
+
+    public function __construct()
+    {
+        $this->category = new ArrayCollection();
+    }
 
     /**
      * Get id

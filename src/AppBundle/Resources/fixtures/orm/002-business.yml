@@ -1,10 +1,13 @@
 AppBundle\Entity\Business:
-    business{1..100}:
+    business_{1..100}:
         title: '<company()>'
         phone: '<phoneNumber()>'
         address: '<streetAddress()>'
         zipCode: '<numerify("17######")>'
         city: '<city()>'
         state: 'AA'
-        featured: '50%? true: false'
+        featured: '20%? 1: 0'
         description: '<sentence(10)>'
+        __calls:
+            - addCategory: ['@business_category_*']
+            - addCategory: ['@business_category_*']

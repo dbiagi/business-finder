@@ -1,0 +1,10 @@
+AppBundle\Entity\Deal:
+    deal_{1..100}:
+        title: '<sentence(4)>'
+        description: '<sentence(20)>'
+        discount: '<randomFloat(2, 10, 50)>'
+        discountType: 'value'
+        price: '<randomFloat(2, 50, 200)>'
+        __calls:
+            - addCategory: ['@deal_category_*']
+            - addCategory: ['@deal_category_*']
