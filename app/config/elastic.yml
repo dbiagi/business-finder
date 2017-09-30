@@ -1,5 +1,4 @@
 fos_elastica:
-    serializer: ~
     clients:
         default: { host: "%elastic_host%", port: "%elastic_port%" }
     indexes:
@@ -7,27 +6,68 @@ fos_elastica:
             index_name: "%elastic_index_name%"
             types:
                 business:
-                    serializer:
-                        groups: [elastic]
+                    dynamic: strict
+                    properties:
+                        title: { type: text }
+                        address: { type: text }
+                        city: { type: keyword }
+                        description: { type: text }
+                        featured: { type: boolean }
+                        categories:
+                            type: nested
+                            properties:
+                                name:
+                                    type: text
+                                    fields:
+                                        keyword: { type: keyword }
+                                module: { type: text }
+                        createdAt:
+                            type: date
+                            format: "strict_date_optional_time||epoch_millis"
                     persistence:
                         driver: orm
                         model: AppBundle\Entity\Business
                         provider: ~
                         finder: ~
                         repository: AppBundle\Repository\Elasticsearch\BusinessElasticRepository
-                business_category:
-                    serializer:
-                        groups: [elastic]
+
+                category:
+                    dynamic: strict
+                    properties:
+                        name:
+                            type: text
+                            fields:
+                                keyword: { type: keyword }
                     persistence:
                         driver: orm
-                        model: AppBundle\Entity\BusinessCategory
+                        model: AppBundle\Entity\Category
                         provider: ~
                         finder: ~
                 event:
-                    serializer:
-                        groups: [elastic]
+                    dynamic: strict
+                    properties:
+                        title: { type: text }
+                        description: { type: text }
+                        startAt:
+                            type: date
+                            format: "strict_date_optional_time||epoch_millis"
+                        endAt:
+                            type: date
+                            format: "strict_date_optional_time||epoch_millis"
+                        recurrent: { type: boolean }
                     persistence:
                         driver: orm
                         model: AppBundle\Entity\Event
+                        provider: ~
+                        finder: ~
+                deal:
+                    dynamic: strict
+                    properties:
+                        title: { type: text }
+                        description: { type: text }
+                        price: { type: double }
+                    persistence:
+                        driver: orm
+                        model: AppBundle\Entity\Deal
                         provider: ~
                         finder: ~

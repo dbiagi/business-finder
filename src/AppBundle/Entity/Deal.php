@@ -213,7 +213,7 @@ class Deal
      *
      * @return ArrayCollection
      */
-    public function getCategory(): ArrayCollection
+    public function getCategory()
     {
         return $this->category;
     }

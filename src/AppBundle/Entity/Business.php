@@ -4,7 +4,6 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -25,7 +24,6 @@ class Business
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @Groups({"elastic"})
      */
     private $id;
 
@@ -36,7 +34,6 @@ class Business
      * @Assert\NotBlank()
      * @Assert\NotNull()
      * @Assert\Length(min="3", max="255")
-     * @Groups({"elastic"})
      */
     private $title;
 
@@ -57,7 +54,6 @@ class Business
      * @Assert\NotBlank()
      * @Assert\NotNull()
      * @Assert\Length(min="3", max="255")
-     * @Groups({"elastic"})
      */
     private $address;
 
@@ -78,7 +74,6 @@ class Business
      * @Assert\NotBlank()
      * @Assert\NotNull()
      * @Assert\Length(min="3", max="255")
-     * @Groups({"elastic"})
      */
     private $city;
 
@@ -106,7 +101,6 @@ class Business
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Category")
      * @ORM\JoinTable(name="business_x_category")
      * @Assert\Count(min="1")
-     * @Groups({"elastic"})
      */
     private $categories;
 
@@ -119,7 +113,6 @@ class Business
     /**
      * @var boolean
      * @ORM\Column(type="boolean")
-     * @Groups({"elastic"})
      */
     private $featured = false;
 

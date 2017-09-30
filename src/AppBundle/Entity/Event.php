@@ -4,7 +4,6 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -21,7 +20,6 @@ class Event
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @Groups({"elastic"})
      */
     private $id;
 
@@ -29,7 +27,6 @@ class Event
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
-     * @Groups({"elastic"})
      */
     private $title;
 
@@ -37,7 +34,6 @@ class Event
      * @var string
      *
      * @ORM\Column(name="description", type="text", nullable=true)
-     * @Groups({"elastic"})
      */
     private $description;
 
@@ -45,7 +41,6 @@ class Event
      * @var \DateTime
      *
      * @ORM\Column(name="startAt", type="datetime")
-     * @Groups({"elastic"})
      */
     private $startAt;
 
@@ -53,7 +48,6 @@ class Event
      * @var \DateTime
      *
      * @ORM\Column(name="endAt", type="datetime", nullable=true)
-     * @Groups({"elastic"})
      */
     private $endAt;
 
@@ -216,9 +210,9 @@ class Event
     /**
      * Get category
      *
-     * @return Category
+     * @return ArrayCollection
      */
-    public function getCategory(): Category
+    public function getCategory()
     {
         return $this->category;
     }
