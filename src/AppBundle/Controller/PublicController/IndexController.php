@@ -20,13 +20,12 @@ class IndexController extends Controller
      * Homepage
      *
      * @param Request $request
-     * @param EntityManagerInterface $em
      * @param PaginatorInterface $paginator
      * @return Response
      *
      * @Route("/", name="home")
      */
-    public function indexAction(Request $request, EntityManagerInterface $em, PaginatorInterface $paginator)
+    public function indexAction(Request $request, PaginatorInterface $paginator)
     {
         $keywords = $request->get(SearchType::NAME);
         $page = $request->get('page', 1);

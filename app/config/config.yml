@@ -3,6 +3,11 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
     - { resource: elastic.yml }
+    - { resource: "@BlockBundle/Resources/config/services.yml" }
+    - { resource: "@SearchBundle/Resources/config/services.yml" }
+    - { resource: "@ListingBundle/Resources/config/services.yml" }
+    - { resource: "@DealBundle/Resources/config/services.yml" }
+    - { resource: "@EventBundle/Resources/config/services.yml" }
 
 framework:
     #esi:             ~

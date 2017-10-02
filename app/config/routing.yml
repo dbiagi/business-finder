@@ -1,3 +1,28 @@
+event:
+    resource: "@EventBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+deal:
+    resource: "@DealBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+listing:
+    resource: "@ListingBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+search:
+    resource: "@SearchBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+block:
+    resource: "@BlockBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 public_routes:
     resource: "@AppBundle/Controller/PublicController"
     type:     annotation

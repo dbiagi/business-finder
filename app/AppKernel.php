@@ -29,6 +29,11 @@ class AppKernel extends Kernel
             new Http\HttplugBundle\HttplugBundle(),
 
             new AppBundle\AppBundle(),
+            new BlockBundle\BlockBundle(),
+            new SearchBundle\SearchBundle(),
+            new ListingBundle\ListingBundle(),
+            new DealBundle\DealBundle(),
+            new EventBundle\EventBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
