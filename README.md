@@ -1,6 +1,8 @@
 Business Finder
 =========
 
+[![BCH compliance](https://bettercodehub.com/edge/badge/dbiagi/business-finder?branch=master)](https://bettercodehub.com/)
+
 ## Tecnologias utilizadas
 | Ferramenta  | Versão |
 | --------- | ------------- |
