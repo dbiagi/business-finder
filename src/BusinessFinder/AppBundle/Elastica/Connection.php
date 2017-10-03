@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Elastica;
+namespace BusinessFinder\AppBundle\Elastica;
 
 use Elastica\Aggregation\Terms;
 use Elastica\Client;

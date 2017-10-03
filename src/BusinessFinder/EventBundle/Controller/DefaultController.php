@@ -1,6 +1,6 @@
 <?php
 
-namespace EventBundle\Controller;
+namespace BusinessFinder\EventBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;

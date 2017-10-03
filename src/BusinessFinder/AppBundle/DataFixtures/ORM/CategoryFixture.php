@@ -1,8 +1,8 @@
 <?php
 
-namespace AppBundle\DataFixtures\ORM;
+namespace BusinessFinder\AppBundle\DataFixtures\ORM;
 
-use AppBundle\Entity\Category;
+use BusinessFinder\AppBundle\Entity\Category;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;

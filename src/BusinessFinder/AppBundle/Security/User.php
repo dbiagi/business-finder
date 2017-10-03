@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Security;
+namespace BusinessFinder\AppBundle\Security;
 
 use Symfony\Component\Security\Core\User\UserInterface;
 

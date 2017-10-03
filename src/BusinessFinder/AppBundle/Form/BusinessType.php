@@ -1,8 +1,8 @@
 <?php
 
-namespace AppBundle\Form;
+namespace BusinessFinder\AppBundle\Form;
 
-use AppBundle\Entity\Business;
+use BusinessFinder\AppBundle\Entity\Business;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;

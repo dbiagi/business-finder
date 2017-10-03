@@ -1,6 +1,6 @@
 <?php
 
-namespace DealBundle;
+namespace BusinessFinder\DealBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

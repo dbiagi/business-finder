@@ -6,7 +6,7 @@
  * Time: 21:03
  */
 
-namespace AppBundle\Repository;
+namespace BusinessFinder\AppBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 

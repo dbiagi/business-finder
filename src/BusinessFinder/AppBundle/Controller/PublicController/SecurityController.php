@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller\PublicController;
+namespace BusinessFinder\AppBundle\Controller\PublicController;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;

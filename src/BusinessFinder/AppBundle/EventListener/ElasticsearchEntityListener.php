@@ -1,9 +1,9 @@
 <?php
 
-namespace AppBundle\EventListener;
+namespace BusinessFinder\AppBundle\EventListener;
 
-use AppBundle\Annotation\Document;
-use AppBundle\Elastica\ObjectPersisterFactory;
+use BusinessFinder\AppBundle\Annotation\Document;
+use BusinessFinder\AppBundle\Elastica\ObjectPersisterFactory;
 use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;

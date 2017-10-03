@@ -9,12 +9,12 @@ services:
         arguments: ["%locale%"]
         public: true
 
-    AppBundle\:
-        resource: '../../src/AppBundle/*'
-        exclude: '../../src/AppBundle/{Entity,Repository}'
+    BusinessFinder\AppBundle\:
+        resource: '../../src/BusinessFinder/AppBundle/*'
+        exclude: '../../src/BusinessFinder/AppBundle/{Entity,Repository}'
 
-    AppBundle\Controller\:
-        resource: '../../src/AppBundle/Controller'
+    BusinessFinder\AppBundle\Controller\:
+        resource: '../../src/BusinessFinder/AppBundle/Controller'
         public: true
         tags: ['controller.service_arguments']
 

@@ -1,4 +1,4 @@
-AppBundle\Entity\Event:
+BusinessFinder\AppBundle\Entity\Event:
     event_{1..100}:
         title: '<sentence(5)>'
         description: '<sentence(20)>'

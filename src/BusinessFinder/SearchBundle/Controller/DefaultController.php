@@ -1,6 +1,6 @@
 <?php
 
-namespace SearchBundle\Controller;
+namespace BusinessFinder\SearchBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;

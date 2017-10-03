@@ -1,10 +1,10 @@
 <?php
 
-namespace AppBundle\Controller\PublicController;
+namespace BusinessFinder\AppBundle\Controller\PublicController;
 
-use AppBundle\Entity\Business;
-use AppBundle\Form\SearchType;
-use AppBundle\Repository\Elasticsearch\BusinessElasticRepository;
+use BusinessFinder\AppBundle\Entity\Business;
+use BusinessFinder\AppBundle\Form\SearchType;
+use BusinessFinder\AppBundle\Repository\Elasticsearch\BusinessElasticRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;

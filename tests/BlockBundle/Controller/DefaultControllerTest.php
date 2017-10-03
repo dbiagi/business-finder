@@ -1,6 +1,6 @@
 <?php
 
-namespace BlockBundle\Tests\Controller;
+namespace BusinessFinder\BlockBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

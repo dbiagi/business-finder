@@ -1,9 +1,9 @@
 <?php
 
-namespace AppBundle\Controller\PrivateController;
+namespace BusinessFinder\AppBundle\Controller\PrivateController;
 
-use AppBundle\Entity\Business;
-use AppBundle\Form\BusinessType;
+use BusinessFinder\AppBundle\Entity\Business;
+use BusinessFinder\AppBundle\Form\BusinessType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;

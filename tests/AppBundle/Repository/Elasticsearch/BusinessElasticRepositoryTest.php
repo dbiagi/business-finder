@@ -2,8 +2,8 @@
 
 namespace Tests\AppBundle\Repository\Elasticsearch;
 
-use AppBundle\Entity\Business;
-use AppBundle\Repository\Elasticsearch\BusinessElasticRepository;
+use BusinessFinder\AppBundle\Entity\Business;
+use BusinessFinder\AppBundle\Repository\Elasticsearch\BusinessElasticRepository;
 use Tests\AppBundle\Repository\ElasticsearchRepositoryTestCase;
 
 class BusinessElasticRepositoryTest extends ElasticsearchRepositoryTestCase

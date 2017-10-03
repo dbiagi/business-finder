@@ -1,6 +1,6 @@
 <?php
 
-namespace DealBundle\Controller;
+namespace BusinessFinder\DealBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;

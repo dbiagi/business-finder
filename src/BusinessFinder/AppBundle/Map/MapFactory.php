@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Map;
+namespace BusinessFinder\AppBundle\Map;
 
 use Ivory\GoogleMap\Map;
 

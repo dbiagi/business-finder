@@ -1,6 +1,6 @@
 <?php
 
-namespace SearchBundle\DependencyInjection;
+namespace BusinessFinder\SearchBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;

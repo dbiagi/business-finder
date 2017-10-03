@@ -48,7 +48,7 @@ doctrine:
         charset:  UTF8
         server_version: 10.3
         types:
-            geolocation: AppBundle\Doctrine\Type\GeolocationType
+            geolocation: BusinessFinder\AppBundle\Doctrine\Type\GeolocationType
         mapping_types:
             point: geolocation
     orm:

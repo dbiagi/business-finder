@@ -1,4 +1,4 @@
-AppBundle\Entity\Category:
+BusinessFinder\AppBundle\Entity\Category:
     category (template):
         name: '<ucwords(<current()>)>'
         slug: '<current()>'

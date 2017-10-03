@@ -1,6 +1,6 @@
 <?php
 
-namespace SearchBundle;
+namespace BusinessFinder\SearchBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

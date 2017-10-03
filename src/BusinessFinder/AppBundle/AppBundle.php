@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle;
+namespace BusinessFinder\AppBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace BlockBundle;
+namespace BusinessFinder\BlockBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

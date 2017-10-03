@@ -1,8 +1,8 @@
 <?php
 
-namespace AppBundle\Doctrine\Type;
+namespace BusinessFinder\AppBundle\Doctrine\Type;
 
-use AppBundle\Entity\Geolocation;
+use BusinessFinder\AppBundle\Entity\Geolocation;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace EventBundle;
+namespace BusinessFinder\EventBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

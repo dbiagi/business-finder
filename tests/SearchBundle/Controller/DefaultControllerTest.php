@@ -1,6 +1,6 @@
 <?php
 
-namespace SearchBundle\Tests\Controller;
+namespace BusinessFinder\SearchBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

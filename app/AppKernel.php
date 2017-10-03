@@ -22,18 +22,16 @@ class AppKernel extends Kernel
 
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
 
-            new JMS\TranslationBundle\JMSTranslationBundle(),
-
             new Ivory\GoogleMapBundle\IvoryGoogleMapBundle(),
             new Ivory\SerializerBundle\IvorySerializerBundle(),
             new Http\HttplugBundle\HttplugBundle(),
 
-            new AppBundle\AppBundle(),
-            new BlockBundle\BlockBundle(),
-            new SearchBundle\SearchBundle(),
-            new ListingBundle\ListingBundle(),
-            new DealBundle\DealBundle(),
-            new EventBundle\EventBundle(),
+            new BusinessFinder\AppBundle\AppBundle(),
+            new BusinessFinder\BlockBundle\BlockBundle(),
+            new BusinessFinder\SearchBundle\SearchBundle(),
+            new BusinessFinder\ListingBundle\ListingBundle(),
+            new BusinessFinder\DealBundle\DealBundle(),
+            new BusinessFinder\EventBundle\EventBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

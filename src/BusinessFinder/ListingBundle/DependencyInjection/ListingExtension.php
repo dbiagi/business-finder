@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\DependencyInjection;
+namespace BusinessFinder\ListingBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

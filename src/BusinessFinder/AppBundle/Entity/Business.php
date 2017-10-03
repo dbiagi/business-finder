@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace BusinessFinder\AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -98,7 +98,7 @@ class Business
 
     /**
      * @var ArrayCollection
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Category")
+     * @ORM\ManyToMany(targetEntity="BusinessFinder\AppBundle\Entity\Category")
      * @ORM\JoinTable(name="business_x_category")
      * @Assert\Count(min="1")
      */

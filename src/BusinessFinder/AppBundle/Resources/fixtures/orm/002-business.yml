@@ -1,4 +1,4 @@
-AppBundle\Entity\Business:
+BusinessFinder\AppBundle\Entity\Business:
     business_{1..100}:
         title: '<company()>'
         phone: '<phoneNumber()>'

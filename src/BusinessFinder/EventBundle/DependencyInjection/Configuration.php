@@ -1,6 +1,6 @@
 <?php
 
-namespace EventBundle\DependencyInjection;
+namespace BusinessFinder\EventBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;

@@ -6,7 +6,7 @@
  * Time: 21:32
  */
 
-namespace AppBundle\Elastica;
+namespace BusinessFinder\AppBundle\Elastica;
 
 
 use FOS\ElasticaBundle\Persister\ObjectPersister;

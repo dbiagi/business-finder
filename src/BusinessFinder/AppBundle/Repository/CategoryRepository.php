@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Repository;
+namespace BusinessFinder\AppBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 

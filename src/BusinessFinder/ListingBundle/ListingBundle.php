@@ -1,6 +1,6 @@
 <?php
 
-namespace ListingBundle;
+namespace BusinessFinder\ListingBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

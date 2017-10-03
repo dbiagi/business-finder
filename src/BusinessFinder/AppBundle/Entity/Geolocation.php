@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace BusinessFinder\AppBundle\Entity;
 
 
 class Geolocation
