@@ -1,7 +1,6 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    {{ render(controller('AppBundle:PublicController/Index:search', [app.request])) }}
     {% if is_granted('ROLE_ADMIN') %}
         <div class="fixed-action-btn">
             <a class="btn-floating btn-large red" href="{{ path('app_business_add') }}">

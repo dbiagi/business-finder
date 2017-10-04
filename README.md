@@ -42,4 +42,7 @@ bower intall
 admin:admin
 
 ## TODO
-Criar container nginx e outro php e configurar os dois
+Se parar eventos, empresas e promoções em bundles diferentes
+Adicionar testes unitários e funcionais
+Adicionar form de geolocation
+Fizer um bundle de buscas

@@ -46,6 +46,12 @@ class IndexController extends Controller
         ]);
     }
 
+    /**
+     * @param Request $request
+     * @return Response
+     *
+     * @Route("/search", name="global_search")
+     */
     public function searchAction(Request $request)
     {
         $data = $request->get(SearchType::NAME);
