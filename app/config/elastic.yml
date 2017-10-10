@@ -23,7 +23,8 @@ fos_elastica:
                                 module: { type: text }
                         createdAt:
                             type: date
-                            format: "strict_date_optional_time||epoch_millis"
+                        updatedAt:
+                            type: date
                     persistence:
                         driver: orm
                         model: AppBundle\Entity\Business
@@ -48,13 +49,11 @@ fos_elastica:
                     properties:
                         title: { type: text }
                         description: { type: text }
+                        recurrent: { type: boolean }
                         startAt:
                             type: date
-                            format: "strict_date_optional_time||epoch_millis"
                         endAt:
                             type: date
-                            format: "strict_date_optional_time||epoch_millis"
-                        recurrent: { type: boolean }
                     persistence:
                         driver: orm
                         model: AppBundle\Entity\Event
@@ -66,6 +65,10 @@ fos_elastica:
                         title: { type: text }
                         description: { type: text }
                         price: { type: double }
+                        createdAt:
+                            type: date
+                        updatedAt:
+                            type: date
                     persistence:
                         driver: orm
                         model: AppBundle\Entity\Deal

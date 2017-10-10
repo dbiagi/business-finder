@@ -11,9 +11,12 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="deal")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\DealRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Deal
 {
+    use Datable;
+
     const DISCOUNT_VALUE = 'value';
 
     const DISCOUNT_PERCENT = 'percent';
