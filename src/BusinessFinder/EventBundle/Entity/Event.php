@@ -1,16 +1,18 @@
 <?php
 
-namespace BusinessFinder\AppBundle\Entity;
+namespace BusinessFinder\EventBundle\Entity;
 
+use BusinessFinder\AppBundle\Entity\Geolocation;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use BusinessFinder\AppBundle\Entity\Category;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Event entity
  *
  * @ORM\Table(name="event")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\EventRepository")
+ * @ORM\Entity(repositoryClass="BusinessFinder\AppBundle\Repository\EventRepository")
  */
 class Event
 {

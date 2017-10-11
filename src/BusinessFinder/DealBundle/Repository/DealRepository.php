@@ -1,6 +1,6 @@
 <?php
 
-namespace BusinessFinder\AppBundle\Repository;
+namespace BusinessFinder\DealBundle\Repository;
 
 /**
  * DealRepository

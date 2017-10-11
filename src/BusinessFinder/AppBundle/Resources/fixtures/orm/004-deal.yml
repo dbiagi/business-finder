@@ -1,4 +1,4 @@
-BusinessFinder\AppBundle\Entity\Deal:
+BusinessFinder\DealBundle\Entity\Deal:
     deal_{1..100}:
         title: '<sentence(4)>'
         description: '<sentence(20)>'

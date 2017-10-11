@@ -2,7 +2,7 @@
 
 namespace Tests\AppBundle\Repository\Elasticsearch;
 
-use BusinessFinder\AppBundle\Entity\Business;
+use BusinessFinder\AppBundle\Entity\Listing;
 use BusinessFinder\AppBundle\Repository\Elasticsearch\BusinessElasticRepository;
 use Tests\AppBundle\Repository\ElasticsearchRepositoryTestCase;
 
@@ -13,7 +13,7 @@ class BusinessElasticRepositoryTest extends ElasticsearchRepositoryTestCase
         $terms = 'and';
 
         /** @var BusinessElasticRepository $repo */
-        $repo = $this->manager->getRepository(Business::class);
+        $repo = $this->manager->getRepository(Listing::class);
 
         $result = $repo->findByKeywords($terms);
 

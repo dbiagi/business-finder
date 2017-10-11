@@ -1,7 +1,8 @@
 <?php
 
-namespace BusinessFinder\AppBundle\Entity;
+namespace BusinessFinder\DealBundle\Entity;
 
+use BusinessFinder\AppBundle\Entity\Category;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -10,7 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Deal
  *
  * @ORM\Table(name="deal")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\DealRepository")
+ * @ORM\Entity(repositoryClass="BusinessFinder\DealBundle\Repository\DealRepository")
  */
 class Deal
 {

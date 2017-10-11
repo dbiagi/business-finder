@@ -2,7 +2,7 @@
 
 namespace BusinessFinder\AppBundle\Controller\PublicController;
 
-use BusinessFinder\AppBundle\Entity\Business;
+use BusinessFinder\AppBundle\Entity\Listing;
 use BusinessFinder\AppBundle\Form\SearchType;
 use BusinessFinder\AppBundle\Repository\Elasticsearch\BusinessElasticRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -31,7 +31,7 @@ class IndexController extends Controller
         $page = $request->get('page', 1);
 
         /** @var BusinessElasticRepository $repo */
-        $repo = $this->get('fos_elastica.manager')->getRepository(Business::class);
+        $repo = $this->get('fos_elastica.manager')->getRepository(Listing::class);
 
         if($keywords) {
             $entities = $repo->findByKeywords($keywords);

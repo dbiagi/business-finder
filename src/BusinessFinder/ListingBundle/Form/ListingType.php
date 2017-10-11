@@ -1,13 +1,13 @@
 <?php
 
-namespace BusinessFinder\AppBundle\Form;
+namespace BusinessFinder\ListingBundle\Form;
 
-use BusinessFinder\AppBundle\Entity\Business;
+use BusinessFinder\AppBundle\Entity\Listing;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class BusinessType extends AbstractType
+class ListingType extends AbstractType
 {
 
     const NAME = 'business_type';
@@ -48,7 +48,7 @@ class BusinessType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Business::class,
+            'data_class' => Listing::class,
         ]);
     }
 

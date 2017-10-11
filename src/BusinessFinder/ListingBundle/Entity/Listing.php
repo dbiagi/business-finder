@@ -1,7 +1,10 @@
 <?php
 
-namespace BusinessFinder\AppBundle\Entity;
+namespace BusinessFinder\ListingBundle\Entity;
 
+use BusinessFinder\AppBundle\Entity\Category;
+use BusinessFinder\AppBundle\Entity\Datable;
+use BusinessFinder\AppBundle\Entity\Geolocation;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -9,13 +12,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Business entity
  *
- * @ORM\Table(name="business")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\BusinessRepository")
+ * @ORM\Table(name="listing")
+ * @ORM\Entity(repositoryClass="BusinessFinder\ListingBundle\Repository\ListingRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class Business
+class Listing
 {
-
     use Datable;
 
     /**
@@ -99,7 +101,7 @@ class Business
     /**
      * @var ArrayCollection
      * @ORM\ManyToMany(targetEntity="BusinessFinder\AppBundle\Entity\Category")
-     * @ORM\JoinTable(name="business_x_category")
+     * @ORM\JoinTable(name="listing_x_category")
      * @Assert\Count(min="1")
      */
     private $categories;
@@ -146,7 +148,7 @@ class Business
      *
      * @param string $title
      *
-     * @return Business
+     * @return Listing
      */
     public function setTitle($title)
     {
@@ -170,7 +172,7 @@ class Business
      *
      * @param string $phone
      *
-     * @return Business
+     * @return Listing
      */
     public function setPhone($phone)
     {
@@ -194,7 +196,7 @@ class Business
      *
      * @param string $address
      *
-     * @return Business
+     * @return Listing
      */
     public function setAddress($address)
     {
@@ -218,7 +220,7 @@ class Business
      *
      * @param string $zipCode
      *
-     * @return Business
+     * @return Listing
      */
     public function setZipCode($zipCode)
     {
@@ -242,7 +244,7 @@ class Business
      *
      * @param string $city
      *
-     * @return Business
+     * @return Listing
      */
     public function setCity($city)
     {
@@ -266,7 +268,7 @@ class Business
      *
      * @param string $state
      *
-     * @return Business
+     * @return Listing
      */
     public function setState($state)
     {
@@ -290,7 +292,7 @@ class Business
      *
      * @param string $description
      *
-     * @return Business
+     * @return Listing
      */
     public function setDescription($description)
     {
@@ -301,7 +303,7 @@ class Business
 
     /**
      * @param Category $category
-     * @return Business
+     * @return Listing
      */
     public function addCategory(Category $category)
     {
@@ -322,7 +324,7 @@ class Business
 
     /**
      * @param ArrayCollection $categories
-     * @return Business
+     * @return Listing
      */
     public function setCategories($categories = null)
     {
@@ -341,7 +343,7 @@ class Business
 
     /**
      * @param Geolocation $location
-     * @return Business
+     * @return Listing
      */
     public function setLocation($location)
     {
@@ -360,7 +362,7 @@ class Business
 
     /**
      * @param bool $featured
-     * @return Business
+     * @return Listing
      */
     public function setFeatured(bool $featured)
     {

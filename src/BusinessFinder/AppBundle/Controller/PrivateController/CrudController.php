@@ -2,8 +2,8 @@
 
 namespace BusinessFinder\AppBundle\Controller\PrivateController;
 
-use BusinessFinder\AppBundle\Entity\Business;
-use BusinessFinder\AppBundle\Form\BusinessType;
+use BusinessFinder\ListingBundle\Entity\Listing;
+use BusinessFinder\ListingBundle\Form\ListingType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -38,8 +38,8 @@ class CrudController extends Controller
      */
     public function newAction(Request $request)
     {
-        $business = new Business();
-        $form = $this->createForm(BusinessType::class, $business);
+        $business = new Listing();
+        $form = $this->createForm(ListingType::class, $business);
 
         $form->handleRequest($request);
 
@@ -76,12 +76,12 @@ class CrudController extends Controller
      * @Route("/{id}/edit", requirements={"id"="\d+"}, name="app_business_edit")
      *
      * @param Request $request
-     * @param Business $business
+     * @param Listing $business
      * @return Response
      */
-    public function editAction(Request $request, Business $business)
+    public function editAction(Request $request, Listing $business)
     {
-        $form = $this->createForm(BusinessType::class, $business);
+        $form = $this->createForm(ListingType::class, $business);
 
         $form->handleRequest($request);
 
@@ -112,10 +112,10 @@ class CrudController extends Controller
      * @Method("DELETE")
      *
      * @param Request $request
-     * @param Business $business
+     * @param Listing $business
      * @return RedirectResponse
      */
-    public function removeAction(Request $request, Business $business)
+    public function removeAction(Request $request, Listing $business)
     {
         $token = $request->get('_token');
 
