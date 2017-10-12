@@ -1,9 +1,10 @@
 <?php
 
-namespace BusinessFinder\AppBundle\Controller\PrivateController;
+namespace BusinessFinder\AppBundle\Controller;
 
+use BusinessFinder\AppBundle\Event\EntityEventArgs;
+use BusinessFinder\AppBundle\Event\EntityEvents;
 use BusinessFinder\ListingBundle\Entity\Listing;
-use BusinessFinder\ListingBundle\Form\ListingType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -13,75 +14,70 @@ use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class CrudController
- *
- * @package AppBundle\Controller\PrivateController
- *
- * @Route("/business")
  */
 class CrudController extends Controller
 {
-
     /**
-     * @Route("/", name="app_admin")
-     *
-     * @return Response
-     */
-    public function indexAction()
-    {
-        return $this->redirectToRoute('home');
-    }
-
-    /**
-     * @Route("/add", name="app_business_add")
+     * @Route("/{item}/add", name="new_item")
      * @param Request $request
+     * @param string $item
      * @return Response
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, $item)
     {
-        $business = new Listing();
-        $form = $this->createForm(ListingType::class, $business);
+        $dispatcher = $this->get('event_dispatcher');
+
+        $eventArgs = new EntityEventArgs();
+
+        $dispatcher->dispatch(sprintf(EntityEvents::NEW_ITEM, $item), $eventArgs);
+
+        $entityClass = $eventArgs->getEntityClass();
+
+        $form = $this->createForm($eventArgs->getFormTypeClass(), new $entityClass);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted()) {
-
             if ($form->isValid()) {
                 try {
-
                     $em = $this->getDoctrine()->getManager();
-                    $em->persist($business);
+                    $em->persist($form->getData());
                     $em->flush();
 
-                    $this->get('app.elastica.connection')->addDocument('business', $business);
-
-                    $this->addFlash('success', 'Loja criada com sucesso.');
+                    $this->addFlash('success', $eventArgs->getSucessFlashMessage());
 
                     return $this->redirectToRoute('home');
                 } catch (\Exception $e) {
                     $this->addFlash('error', $e->getMessage());
                 }
             } else {
-                $this->addFlash('error',
-                    'Foram encontrado alguns dados inválidos no formulário.');
+                $this->addFlash('error', 'Foram encontrado alguns dados inválidos no formulário.');
             }
         }
 
-        return $this->render('admin/business/crud.html.twig', [
+        return $this->render('pages/item/default_crud.html.twig', [
             'form' => $form->createView(),
-            'map'  => $this->get('app.map_factory')->createMap(),
         ]);
     }
 
     /**
-     * @Route("/{id}/edit", requirements={"id"="\d+"}, name="app_business_edit")
+     * @Route("/{item}/{id}/edit", requirements={"id"="\d+"}, name="edit_item")
      *
      * @param Request $request
-     * @param Listing $business
+     * @param string $item
+     * @param int $id
      * @return Response
      */
-    public function editAction(Request $request, Listing $business)
+    public function editAction(Request $request, $item, $id)
     {
-        $form = $this->createForm(ListingType::class, $business);
+        $eventArgs = new EntityEventArgs();
+        $this->get('event_dispatcher')->dispatch(sprintf(EntityEvents::EDIT_ITEM, $item), $eventArgs);
+
+        $entity = $this->get('doctrine.orm.default_entity_manager')
+            ->getRepository($eventArgs->getEntityClass())
+            ->find($id);
+
+        $form = $this->createForm($eventArgs->getFormTypeClass(), $entity);
 
         $form->handleRequest($request);
 
@@ -89,20 +85,19 @@ class CrudController extends Controller
             if ($form->isValid()) {
                 try {
                     $em = $this->getDoctrine()->getManager();
-                    $em->persist($business);
+                    $em->persist($form->getData());
                     $em->flush();
 
-                    $this->addFlash('success', 'Loja atualizada com sucesso.');
+                    $this->addFlash('success', $eventArgs->getSucessFlashMessage());
 
                     return $this->redirectToRoute('home');
                 } catch (\Exception $e) {
                     $this->addFlash('error', $e->getMessage());
                 }
             }
-
         }
 
-        return $this->render('admin/business/crud.html.twig', [
+        return $this->render('pages/item/default_crud.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -129,7 +124,6 @@ class CrudController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($business);
             $em->flush();
-
         } catch (\Exception $e) {
             $this->addFlash('error', $e->getMessage());
 

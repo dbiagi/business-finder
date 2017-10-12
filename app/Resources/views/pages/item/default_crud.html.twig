@@ -4,16 +4,16 @@
 
 {% block content %}
     {% if form.vars.data.id is not null %}
-        <h3>Editando <strong>{{ form.vars.data.title }}</strong></h3>
+        <h3>{{ 'Editing' | trans }} <strong>{{ form.vars.data.title }}</strong></h3>
     {% else %}
-        <h3>Nova empresa</h3>
+        <h3>{{ 'New listing' | trans }}</h3>
     {% endif %}
 
     {{ form_start(form) }}
     {{ form_widget(form) }}
     <div class="right">
         <button class="btn waves-effect waves-light" type="submit">
-            Submit <i class="material-icons right">send</i>
+            {{ 'Send' | trans }} <i class="material-icons right">send</i>
         </button>
     </div>
     {{ form_end(form) }}

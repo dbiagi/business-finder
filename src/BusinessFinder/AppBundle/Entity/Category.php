@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping\UniqueConstraint;
  *     name="category",
  *     uniqueConstraints={@UniqueConstraint(name="unique_category", columns={"slug", "module"})}
  * )
- * @ORM\Entity(repositoryClass="AppBundle\Repository\CategoryRepository")
+ * @ORM\Entity(repositoryClass="BusinessFinder\AppBundle\Repository\CategoryRepository")
  */
 class Category {
 

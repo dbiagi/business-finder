@@ -2,23 +2,7 @@
 
 {% block body %}
     {% block navbar %}
-        <nav>
-            <div class="nav-wrapper">
-                <ul id="nav-mobile" class="left">
-                    <li><a href="{{ path('home') }}">{{ project_name }}</a></li>
-                    {% if is_granted('ROLE_USER') %}
-                        <li>Olá, {{ app.user.username }}</li>
-                        <li>
-                            <a href="{{ path('logout') }}" title="Sair">
-                                <i class="material-icons">input</i>
-                            </a>
-                        </li>
-                    {% else %}
-                        <li><a href="{{ path('login') }}">Login</a></li>
-                    {% endif %}
-                </ul>
-            </div>
-        </nav>
+        {% include 'blocks/navbar.html.twig' %}
     {% endblock %}
 
     <div class="container">
@@ -30,26 +14,6 @@
                     </div>
                 {% endfor %}
             {% endfor %}
-        {% endblock %}
-
-
-        {% block tabs %}
-            {% set route = app.request.attributes.get('_route') %}
-            <div class="row">
-                <div class="col s12">
-                    <div class="tabs">
-                        <div class="tab col s2">
-                            <a class="{{ route == 'listings_home' ? 'active' : '' }}" href="#">{{ 'Listings' | trans }}</a>
-                        </div>
-                        <div class="tab col s2">
-                            <a class="{{ route == 'events_home' ? 'active' : '' }}" href="#">{{ 'Events' | trans }}</a>
-                        </div>
-                        <div class="tab col s2">
-                            <a class="{{ route == 'deals_home' ? 'active' : '' }}" href="#">{{ 'Deals' | trans }}</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
         {% endblock %}
 
         {% block content %}{% endblock %}

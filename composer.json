@@ -37,7 +37,8 @@
     "egeloen/google-map-bundle": "^3.0",
     "egeloen/serializer-bundle": "^1.0",
     "php-http/httplug-bundle": "^1.6",
-    "php-http/guzzle6-adapter": "^1.1"
+    "php-http/guzzle6-adapter": "^1.1",
+    "knplabs/knp-menu-bundle": "^2.1"
   },
   "require-dev": {
     "sensio/generator-bundle": "^3.0",

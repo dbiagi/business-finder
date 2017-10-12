@@ -2,7 +2,7 @@
 
 namespace BusinessFinder\ListingBundle\Form;
 
-use BusinessFinder\AppBundle\Entity\Listing;
+use BusinessFinder\ListingBundle\Entity\Listing;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;

@@ -1,37 +1,27 @@
 event:
     resource: "@EventBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /event
 
 deal:
     resource: "@DealBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /deal
 
 listing:
     resource: "@ListingBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /listing
 
 search:
     resource: "@SearchBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /search
 
-block:
-    resource: "@BlockBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
-public_routes:
-    resource: "@AppBundle/Controller/PublicController"
+global:
+    resource: "@AppBundle/Controller/"
     type:     annotation
     prefix: /
-
-private_routes:
-    resource: "@AppBundle/Controller/PrivateController"
-    type: annotation
-    prefix: /admin
 
 # Declaring just to prevent 404s
 logout:

@@ -1,0 +1,35 @@
+{% set route = app.request.attributes.get('_route') %}
+
+<nav class="nav-extended">
+    <div class="nav-wrapper">
+        <ul id="nav-mobile" class="center">
+            <li><i class="material-icons">business</i></li>
+            <li><a href="{{ path('home') }}">{{ project_name }}</a></li>
+            {% if is_granted('ROLE_USER') %}
+                <li class="right">
+                    <a href="{{ path('logout') }}" title="{{ 'Logout' | trans }}">
+                        <i class="material-icons">input</i>
+                    </a>
+                </li>
+                <li class="right">
+                    {{ 'Hi' | trans }}, {{ app.user.username }}
+                </li>
+            {% else %}
+                <li><a href="{{ path('login') }}">{{ 'Login' | trans }}</a></li>
+            {% endif %}
+        </ul>
+    </div>
+    <div class="nav-content">
+        <ul class="tabs tabs-transparent">
+            <li class="tab">
+                <a class="{{ route == 'listings_home' ? 'active' : '' }}" href="#">{{ 'Listings' | trans }}</a>
+            </li>
+            <li class="tab">
+                <a class="{{ route == 'events_home' ? 'active' : '' }}" href="#">{{ 'Events' | trans }}</a>
+            </li>
+            <li class="tab">
+                <a class="{{ route == 'deals_home' ? 'active' : '' }}" href="#">{{ 'Deals' | trans }}</a>
+            </li>
+        </ul>
+    </div>
+</nav>

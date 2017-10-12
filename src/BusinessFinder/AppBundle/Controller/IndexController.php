@@ -1,11 +1,10 @@
 <?php
 
-namespace BusinessFinder\AppBundle\Controller\PublicController;
+namespace BusinessFinder\AppBundle\Controller;
 
-use BusinessFinder\AppBundle\Entity\Listing;
 use BusinessFinder\AppBundle\Form\SearchType;
-use BusinessFinder\AppBundle\Repository\Elasticsearch\BusinessElasticRepository;
-use Doctrine\ORM\EntityManagerInterface;
+use BusinessFinder\ListingBundle\Entity\Listing;
+use BusinessFinder\ListingBundle\Repository\ListingRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -30,14 +29,12 @@ class IndexController extends Controller
         $keywords = $request->get(SearchType::NAME);
         $page = $request->get('page', 1);
 
-        /** @var BusinessElasticRepository $repo */
-        $repo = $this->get('fos_elastica.manager')->getRepository(Listing::class);
+        /** @var ListingRepository $repo */
+        $repo = $this->get('doctrine.orm.default_entity_manager')->getRepository(Listing::class);
 
-        if($keywords) {
-            $entities = $repo->findByKeywords($keywords);
-        } else {
-            $entities = $repo->findFeatured();
-        }
+        $entities = $repo->findBy([
+            'featured' => true,
+        ]);
 
         $businesses = $paginator->paginate($entities, $page, self::LIMIT_PER_PAGE);
 
