@@ -11,7 +11,7 @@ services:
 
     BusinessFinder\AppBundle\:
         resource: '../../src/BusinessFinder/AppBundle/*'
-        exclude: '../../src/BusinessFinder/AppBundle/{Entity,Repository}'
+        exclude: '../../src/BusinessFinder/AppBundle/{Entity,Repository,Menu}'
 
     BusinessFinder\AppBundle\Controller\:
         resource: '../../src/BusinessFinder/AppBundle/Controller'

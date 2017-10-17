@@ -1,6 +1,6 @@
 <?php
 
-namespace BusinessFinder\AppBundle\Repository;
+namespace BusinessFinder\EventBundle\Repository;
 
 /**
  * EventRepository

@@ -2,19 +2,19 @@
 
 namespace BusinessFinder\ListingBundle\EventListener;
 
-use BusinessFinder\AppBundle\Event\EntityEvents;
 use BusinessFinder\AppBundle\Event\EntityEventArgs;
+use BusinessFinder\AppBundle\Event\EntityEvents;
 use BusinessFinder\ListingBundle\Entity\Listing;
 use BusinessFinder\ListingBundle\Form\ListingType;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\Translation\Translator;
+use Symfony\Component\Translation\TranslatorInterface;
 
 class ListingEventSubscriber implements EventSubscriberInterface
 {
-    /** @var Translator */
+    /** @var TranslatorInterface */
     private $translator;
 
-    public function __construct(Translator $translator)
+    public function __construct(TranslatorInterface $translator)
     {
         $this->translator = $translator;
     }
@@ -25,7 +25,7 @@ class ListingEventSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            sprintf(EntityEvents::NEW_ITEM, 'listing') => 'onNewListing',
+            sprintf(EntityEvents::NEW_ITEM, 'listing')  => 'onNewListing',
             sprintf(EntityEvents::EDIT_ITEM, 'listing') => 'onEditListing',
         ];
     }
@@ -40,8 +40,7 @@ class ListingEventSubscriber implements EventSubscriberInterface
         $args->setEntityClass(Listing::class)
             ->setFormTypeClass(ListingType::class)
             ->setSucessFlashMessage($this->translator->trans('New listing added'))
-            ->setErrorFlashMessage($this->translator->trans('Error adding a listing'))
-        ;
+            ->setErrorFlashMessage($this->translator->trans('Error adding a listing'));
     }
 
     /**

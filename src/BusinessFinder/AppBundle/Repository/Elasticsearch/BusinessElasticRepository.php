@@ -1,6 +1,6 @@
 <?php
 
-namespace BusinessFinder\AppBundle\Repository\Elasticsearch;
+namespace BusinessFinder\ListingBundle\Repository\Elasticsearch;
 
 use Elastica\QueryBuilder;
 use FOS\ElasticaBundle\Paginator\PaginatorAdapterInterface;

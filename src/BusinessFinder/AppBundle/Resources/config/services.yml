@@ -1,1 +1,8 @@
 services:
+    _defaults:
+        autowire: true
+
+    BusinessFinder\AppBundle\Menu\ModuleNavigationMenuBuilder:
+        public: true
+        tags:
+            - { name: knp_menu.menu_builder, method: build, alias: modules }

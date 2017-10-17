@@ -5,7 +5,7 @@ fos_elastica:
         default:
             index_name: "%elastic_index_name%"
             types:
-                business:
+                listing:
                     dynamic: strict
                     properties:
                         title: { type: text }
@@ -17,7 +17,7 @@ fos_elastica:
                             type: nested
                             properties:
                                 name:
-                                    type: text
+                                    type: keyword
                                     fields:
                                         keyword: { type: keyword }
                                 module: { type: text }
@@ -26,10 +26,10 @@ fos_elastica:
                             format: "strict_date_optional_time||epoch_millis"
                     persistence:
                         driver: orm
-                        model: AppBundle\Entity\Business
+                        model: BusinessFinder\ListingBundle\Entity\Listing
                         provider: ~
                         finder: ~
-                        repository: AppBundle\Repository\Elasticsearch\BusinessElasticRepository
+                        repository: BusinessFinder\ListingBundle\Repository\Elasticsearch\BusinessElasticRepository
 
                 category:
                     dynamic: strict
@@ -40,7 +40,7 @@ fos_elastica:
                                 keyword: { type: keyword }
                     persistence:
                         driver: orm
-                        model: AppBundle\Entity\Category
+                        model: BusinessFinder\AppBundle\Entity\Category
                         provider: ~
                         finder: ~
                 event:
@@ -57,7 +57,7 @@ fos_elastica:
                         recurrent: { type: boolean }
                     persistence:
                         driver: orm
-                        model: AppBundle\Entity\Event
+                        model: BusinessFinder\EventBundle\Entity\Event
                         provider: ~
                         finder: ~
                 deal:
@@ -68,6 +68,6 @@ fos_elastica:
                         price: { type: double }
                     persistence:
                         driver: orm
-                        model: AppBundle\Entity\Deal
+                        model: BusinessFinder\DealBundle\Entity\Deal
                         provider: ~
                         finder: ~
