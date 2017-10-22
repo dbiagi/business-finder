@@ -1,4 +1,8 @@
 services:
-#    block.example:
-#        class: BlockBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    BusinessFinder\BlockBundle\Resolver\BlockAliasResolver: ~
+    BusinessFinder\BlockBundle\Twig\BlockExtension: ~

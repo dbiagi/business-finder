@@ -21,7 +21,7 @@ class HelperExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('print_fab', [$this, 'getFab'])
+            new \Twig_Function('print_fab', [$this, 'getFab'])
         ];
     }
 

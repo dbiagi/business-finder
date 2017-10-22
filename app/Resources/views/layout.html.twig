@@ -2,7 +2,8 @@
 
 {% block body %}
     {% block navbar %}
-        {% include 'blocks/navbar.html.twig' %}
+        {{ block_render('modules_navbar') }}
+        {#{% include 'blocks/navbar.html.twig' %}#}
     {% endblock %}
 
     <div class="container">
