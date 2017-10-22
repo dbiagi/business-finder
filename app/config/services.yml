@@ -17,12 +17,3 @@ services:
         resource: '../../src/BusinessFinder/AppBundle/Controller'
         public: true
         tags: ['controller.service_arguments']
-
-    BusinessFinder\ListingBundle\:
-        resource: '../../src/BusinessFinder/ListingBundle/*'
-        exclude: '../../src/BusinessFinder/ListingBundle/{Entity,Repository}'
-
-    BusinessFinder\ListingBundle\Controller\:
-        resource: '../../src/BusinessFinder/ListingBundle/Controller'
-        public: true
-        tags: ['controller.service_arguments']
