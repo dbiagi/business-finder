@@ -1,5 +1,7 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>Conteudo da home de listing</h1>
+    <div class="row">
+        {{ block_render('listing_featured') }}
+    </div>
 {% endblock %}

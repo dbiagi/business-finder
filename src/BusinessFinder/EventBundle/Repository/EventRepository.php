@@ -10,4 +10,16 @@ namespace BusinessFinder\EventBundle\Repository;
  */
 class EventRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * @return \Doctrine\ORM\Query
+     */
+    public function findUpcomingEvents()
+    {
+        $qb = $this->createQueryBuilder('e');
+
+        $qb->andWhere($qb->expr()->gte('e.startAt', ':now'))
+            ->setParameter('now', (new \DateTime())->format('Y-m-d'));
+
+        return $qb->getQuery();
+    }
 }

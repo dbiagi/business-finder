@@ -1,4 +1,9 @@
 services:
-#    event.example:
-#        class: EventBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    BusinessFinder\EventBundle\:
+        resource: '../../*'
+        exclude: '../../{Entity,Repository}'

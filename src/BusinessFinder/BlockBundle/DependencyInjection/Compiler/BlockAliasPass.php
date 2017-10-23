@@ -19,7 +19,7 @@ class BlockAliasPass implements CompilerPassInterface
         $services = $container->findTaggedServiceIds('block');
 
         foreach ($services as $class => $config) {
-            $container->setAlias(sprintf('%s_%s', BlockBundle::ALIAS_PREFIX, $class::NAME), $class);
+            $container->setAlias(sprintf('%s_%s', BlockBundle::ALIAS_PREFIX, $class::getName()), $class);
         }
     }
 }

@@ -2,19 +2,12 @@
 
 namespace BusinessFinder\AppBundle\Block;
 
+use BusinessFinder\BlockBundle\Block\BaseBlock;
 use BusinessFinder\BlockBundle\Block\BlockInterface;
 
-class ModuleNavbarBlock implements BlockInterface
+class ModuleNavbarBlock extends BaseBlock
 {
     const NAME = 'modules_navbar';
-
-    /** @var \Twig_Environment */
-    private $twig;
-
-    public function __construct(\Twig_Environment $twig)
-    {
-        $this->twig = $twig;
-    }
 
     /**
      * {@inheritdoc}
@@ -48,7 +41,7 @@ class ModuleNavbarBlock implements BlockInterface
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public static function getName()
     {
         return self::NAME;
     }

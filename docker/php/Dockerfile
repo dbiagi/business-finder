@@ -37,6 +37,8 @@ RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-di
 # Install xdebug
 RUN pecl install xdebug && docker-php-ext-enable xdebug
 
+RUN pecl install apcu && docker-php-ext-enable apcu
+
 RUN mkdir /var/www/.composer/cache -p
 
 RUN usermod -u 1000 www-data \

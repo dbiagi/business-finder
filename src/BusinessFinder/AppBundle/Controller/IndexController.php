@@ -18,29 +18,13 @@ class IndexController extends Controller
     /**
      * Homepage
      *
-     * @param Request $request
-     * @param PaginatorInterface $paginator
      * @return Response
      *
      * @Route("/", name="home")
      */
-    public function indexAction(Request $request, PaginatorInterface $paginator)
+    public function indexAction()
     {
-        $keywords = $request->get(SearchType::NAME);
-        $page = $request->get('page', 1);
-
-        /** @var ListingRepository $repo */
-        $repo = $this->get('doctrine.orm.default_entity_manager')->getRepository(Listing::class);
-
-        $entities = $repo->findBy([
-            'featured' => true,
-        ]);
-
-        $businesses = $paginator->paginate($entities, $page, self::LIMIT_PER_PAGE);
-
-        return $this->render('pages/home.html.twig', [
-            'businesses' => $businesses,
-        ]);
+        return $this->render('pages/home.html.twig');
     }
 
     /**

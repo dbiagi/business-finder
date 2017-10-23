@@ -20,9 +20,10 @@
         </ul>
     </div>
     <div class="nav-content">
-        <ul class="tabs tabs-transparent">
+        <ul class="tabs tabs-fixed-width">
+            {% set size = (12/modules|length)|round(0, 'ceil') %}
             {% for module in modules %}
-                <li class="tab">
+                <li class="tab col">
                     <a target="_self" class="{{ module.route == route ? 'active' : '' }}" href="{{ path(module.route) }}">
                         {{ module.name | trans }}
                     </a>

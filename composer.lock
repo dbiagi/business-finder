@@ -3932,16 +3932,16 @@
         },
         {
             "name": "symfony/swiftmailer-bundle",
-            "version": "v2.6.3",
+            "version": "v2.6.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/swiftmailer-bundle.git",
-                "reference": "11555c338f3c367b0a1bd2f024a53aa813f4ce00"
+                "reference": "c4808f5169efc05567be983909d00f00521c53ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/swiftmailer-bundle/zipball/11555c338f3c367b0a1bd2f024a53aa813f4ce00",
-                "reference": "11555c338f3c367b0a1bd2f024a53aa813f4ce00",
+                "url": "https://api.github.com/repos/symfony/swiftmailer-bundle/zipball/c4808f5169efc05567be983909d00f00521c53ec",
+                "reference": "c4808f5169efc05567be983909d00f00521c53ec",
                 "shasum": ""
             },
             "require": {
@@ -3987,7 +3987,7 @@
             ],
             "description": "Symfony SwiftmailerBundle",
             "homepage": "http://symfony.com",
-            "time": "2017-07-22T07:18:13+00:00"
+            "time": "2017-10-19T01:06:41+00:00"
         },
         {
             "name": "symfony/symfony",
@@ -4283,37 +4283,40 @@
         },
         {
             "name": "myclabs/deep-copy",
-            "version": "1.6.1",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "8e6e04167378abf1ddb4d3522d8755c5fd90d102"
+                "reference": "3b8a3a99ba1f6a3952ac2747d989303cbd6b7a3e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/8e6e04167378abf1ddb4d3522d8755c5fd90d102",
-                "reference": "8e6e04167378abf1ddb4d3522d8755c5fd90d102",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/3b8a3a99ba1f6a3952ac2747d989303cbd6b7a3e",
+                "reference": "3b8a3a99ba1f6a3952ac2747d989303cbd6b7a3e",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4.0"
+                "php": "^5.6 || ^7.0"
             },
             "require-dev": {
-                "doctrine/collections": "1.*",
-                "phpunit/phpunit": "~4.1"
+                "doctrine/collections": "^1.0",
+                "doctrine/common": "^2.6",
+                "phpunit/phpunit": "^4.1"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "DeepCopy\\": "src/DeepCopy/"
-                }
+                },
+                "files": [
+                    "src/DeepCopy/deep_copy.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "description": "Create deep copies (clones) of your objects",
-            "homepage": "https://github.com/myclabs/DeepCopy",
             "keywords": [
                 "clone",
                 "copy",
@@ -4321,35 +4324,35 @@
                 "object",
                 "object graph"
             ],
-            "time": "2017-04-12T18:52:22+00:00"
+            "time": "2017-10-19T19:58:43+00:00"
         },
         {
             "name": "nelmio/alice",
-            "version": "v3.0.1",
+            "version": "v3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nelmio/alice.git",
-                "reference": "1370ac2c75f12909c1cf99d841ff903385b53150"
+                "reference": "11025bcbfe79594225f5d2332c52cbe90c29872f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nelmio/alice/zipball/1370ac2c75f12909c1cf99d841ff903385b53150",
-                "reference": "1370ac2c75f12909c1cf99d841ff903385b53150",
+                "url": "https://api.github.com/repos/nelmio/alice/zipball/11025bcbfe79594225f5d2332c52cbe90c29872f",
+                "reference": "11025bcbfe79594225f5d2332c52cbe90c29872f",
                 "shasum": ""
             },
             "require": {
                 "fzaninotto/faker": "^1.6",
                 "myclabs/deep-copy": "^1.5.2",
                 "php": "^7.0",
-                "symfony/property-access": "^2.7.11||^3.0",
-                "symfony/yaml": "^2.7||^3.0"
+                "symfony/property-access": "^2.7.11 || ^3.0 || ^4.0",
+                "symfony/yaml": "^2.7 || ^3.0 || ^4.0"
             },
             "require-dev": {
                 "bamarni/composer-bin-plugin": "^1.1.0",
-                "php-mock/php-mock": "^1.0",
+                "php-mock/php-mock": "^2.0",
                 "phpspec/prophecy": "^1.6",
-                "phpunit/phpunit": "^5.6",
-                "symfony/phpunit-bridge": "^3.1",
+                "phpunit/phpunit": "^6.0",
+                "symfony/phpunit-bridge": "^3.3 || ^4.0",
                 "symfony/var-dumper": "^3.2"
             },
             "type": "library",
@@ -4358,7 +4361,7 @@
                     "bin-links": false
                 },
                 "branch-alias": {
-                    "dev-master": "3.0.x-dev"
+                    "dev-master": "3.1.0-dev"
                 }
             },
             "autoload": {
@@ -4394,7 +4397,7 @@
                 "faker",
                 "test"
             ],
-            "time": "2017-09-14T07:24:58+00:00"
+            "time": "2017-10-22T15:46:01+00:00"
         },
         {
             "name": "phar-io/manifest",

@@ -1,4 +1,9 @@
 services:
-#    listing.example:
-#        class: ListingBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    _defaults:
+        autoconfigure: true
+        autowire: true
+        public: false
+
+    BusinessFinder\ListingBundle\:
+        resource: '../../*'
+        exclude: '../../{Entity, Repository}'
