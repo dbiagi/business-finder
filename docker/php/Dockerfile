@@ -14,7 +14,7 @@ RUN apt-get update \
     zlib1g-dev \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
-    libpng12-dev \
+    libpng-dev \
     g++
 
 # Install composer
