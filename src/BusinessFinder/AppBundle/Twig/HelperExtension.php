@@ -21,7 +21,7 @@ class HelperExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_Function('print_fab', [$this, 'getFab'])
+            new \Twig_Function('print_fab', [$this, 'getFab']),
         ];
     }
 
@@ -30,7 +30,7 @@ class HelperExtension extends \Twig_Extension
      *
      * @return string
      */
-    public function getFab()
+    public function getFab(): string
     {
         return $this->environment->render('blocks/fab.html.twig');
     }

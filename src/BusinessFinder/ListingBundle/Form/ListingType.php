@@ -10,7 +10,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class ListingType extends AbstractType
 {
 
-    const NAME = 'business_type';
+    public const NAME = 'business_type';
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {

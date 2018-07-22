@@ -1,6 +1,6 @@
 <?php
 
-namespace BusinessFinder\ListingBundle\Repository\Elasticsearch;
+namespace BusinessFinder\AppBundle\Repository\Elasticsearch;
 
 use Elastica\QueryBuilder;
 use FOS\ElasticaBundle\Paginator\PaginatorAdapterInterface;
@@ -12,7 +12,7 @@ class BusinessElasticRepository extends Repository
      * @param $keywords
      * @return PaginatorAdapterInterface
      */
-    public function findByKeywords($keywords)
+    public function findByKeywords($keywords): PaginatorAdapterInterface
     {
         $terms = [
             'title'           => ['value' => $keywords, 'boost' => 1.8],
@@ -34,7 +34,7 @@ class BusinessElasticRepository extends Repository
         return $this->finder->createPaginatorAdapter($query);
     }
 
-    public function findFeatured()
+    public function findFeatured(): PaginatorAdapterInterface
     {
         $qb = new QueryBuilder();
         $query = $qb->query()->bool();

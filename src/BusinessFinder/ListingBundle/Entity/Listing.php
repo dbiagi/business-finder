@@ -6,6 +6,7 @@ use BusinessFinder\AppBundle\Entity\Category;
 use BusinessFinder\AppBundle\Entity\Datable;
 use BusinessFinder\AppBundle\Entity\Geolocation;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -118,7 +119,7 @@ class Listing
      */
     private $featured = false;
 
-    function __construct()
+    public function __construct()
     {
         $this->categories = new ArrayCollection();
     }
@@ -128,7 +129,7 @@ class Listing
      *
      * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
@@ -138,7 +139,7 @@ class Listing
      *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): string
     {
         return $this->title;
     }
@@ -150,7 +151,7 @@ class Listing
      *
      * @return Listing
      */
-    public function setTitle($title)
+    public function setTitle($title): Listing
     {
         $this->title = $title;
 
@@ -162,7 +163,7 @@ class Listing
      *
      * @return string
      */
-    public function getPhone()
+    public function getPhone(): string
     {
         return $this->phone;
     }
@@ -174,7 +175,7 @@ class Listing
      *
      * @return Listing
      */
-    public function setPhone($phone)
+    public function setPhone($phone): Listing
     {
         $this->phone = $phone;
 
@@ -186,7 +187,7 @@ class Listing
      *
      * @return string
      */
-    public function getAddress()
+    public function getAddress(): string
     {
         return $this->address;
     }
@@ -198,7 +199,7 @@ class Listing
      *
      * @return Listing
      */
-    public function setAddress($address)
+    public function setAddress($address): Listing
     {
         $this->address = $address;
 
@@ -210,7 +211,7 @@ class Listing
      *
      * @return string
      */
-    public function getZipCode()
+    public function getZipCode(): string
     {
         return $this->zipCode;
     }
@@ -222,7 +223,7 @@ class Listing
      *
      * @return Listing
      */
-    public function setZipCode($zipCode)
+    public function setZipCode($zipCode): Listing
     {
         $this->zipCode = $zipCode;
 
@@ -234,7 +235,7 @@ class Listing
      *
      * @return string
      */
-    public function getCity()
+    public function getCity(): string
     {
         return $this->city;
     }
@@ -246,7 +247,7 @@ class Listing
      *
      * @return Listing
      */
-    public function setCity($city)
+    public function setCity($city): Listing
     {
         $this->city = $city;
 
@@ -258,7 +259,7 @@ class Listing
      *
      * @return string
      */
-    public function getState()
+    public function getState(): string
     {
         return $this->state;
     }
@@ -270,7 +271,7 @@ class Listing
      *
      * @return Listing
      */
-    public function setState($state)
+    public function setState($state): Listing
     {
         $this->state = $state;
 
@@ -282,7 +283,7 @@ class Listing
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }
@@ -294,7 +295,7 @@ class Listing
      *
      * @return Listing
      */
-    public function setDescription($description)
+    public function setDescription($description): Listing
     {
         $this->description = $description;
 
@@ -305,7 +306,7 @@ class Listing
      * @param Category $category
      * @return Listing
      */
-    public function addCategory(Category $category)
+    public function addCategory(Category $category): Listing
     {
         if (!$this->categories->contains($category)) {
             $this->categories->add($category);
@@ -317,7 +318,7 @@ class Listing
     /**
      * @return ArrayCollection
      */
-    public function getCategories()
+    public function getCategories(): Collection
     {
         return $this->categories;
     }
@@ -326,7 +327,7 @@ class Listing
      * @param ArrayCollection $categories
      * @return Listing
      */
-    public function setCategories($categories = null)
+    public function setCategories($categories = null): Listing
     {
         $this->categories = $categories;
 
@@ -336,7 +337,7 @@ class Listing
     /**
      * @return Geolocation
      */
-    public function getLocation()
+    public function getLocation(): Geolocation
     {
         return $this->location;
     }
@@ -345,7 +346,7 @@ class Listing
      * @param Geolocation $location
      * @return Listing
      */
-    public function setLocation($location)
+    public function setLocation($location): Listing
     {
         $this->location = $location;
 
@@ -364,7 +365,7 @@ class Listing
      * @param bool $featured
      * @return Listing
      */
-    public function setFeatured(bool $featured)
+    public function setFeatured(bool $featured): Listing
     {
         $this->featured = $featured;
 

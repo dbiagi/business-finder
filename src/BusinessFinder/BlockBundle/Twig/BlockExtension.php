@@ -17,11 +17,11 @@ class BlockExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_Function('block_render', [$this, 'render'], ['is_safe' => ['html']])
+            new \Twig_Function('block_render', [$this, 'render'], ['is_safe' => ['html']]),
         ];
     }
 
-    public function render($alias)
+    public function render($alias): string
     {
         $block = $this->resolver->resolve($alias);
 

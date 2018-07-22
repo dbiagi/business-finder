@@ -13,7 +13,7 @@ use Doctrine\ORM\QueryBuilder;
  */
 class ListingRepository extends EntityRepository
 {
-    public function findByCriteria($criteria)
+    public function findByCriteria($criteria): QueryBuilder
     {
         $qb = $this->createQueryBuilder('b')
             ->select('b, categories')
@@ -25,7 +25,7 @@ class ListingRepository extends EntityRepository
         return $qb;
     }
 
-    private function filter(QueryBuilder $qb, $criteria)
+    private function filter(QueryBuilder $qb, $criteria): QueryBuilder
     {
         if (!isset($criteria['terms']) && !$criteria['terms']) {
             return $qb;

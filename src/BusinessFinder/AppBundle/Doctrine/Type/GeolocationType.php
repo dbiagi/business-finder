@@ -8,7 +8,7 @@ use Doctrine\DBAL\Types\Type;
 
 class GeolocationType extends Type
 {
-    const GEOLOCATION = 'geolocation';
+    public const GEOLOCATION = 'geolocation';
 
     /**
      * {@inheritdoc}

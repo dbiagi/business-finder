@@ -37,7 +37,7 @@ class EntityEventArgs extends Event
      * @param mixed $entityClass
      * @return EntityEventArgs
      */
-    public function setEntityClass($entityClass)
+    public function setEntityClass($entityClass): EntityEventArgs
     {
         $this->entityClass = $entityClass;
 
@@ -60,7 +60,7 @@ class EntityEventArgs extends Event
      * @param string $formTypeClass
      * @return EntityEventArgs
      */
-    public function setFormTypeClass(string $formTypeClass)
+    public function setFormTypeClass(string $formTypeClass): EntityEventArgs
     {
         $this->formTypeClass = $formTypeClass;
 
@@ -83,7 +83,7 @@ class EntityEventArgs extends Event
      * @param string $template
      * @return EntityEventArgs
      */
-    public function setTemplate(string $template)
+    public function setTemplate(string $template): EntityEventArgs
     {
         $this->template = $template;
 
@@ -106,7 +106,7 @@ class EntityEventArgs extends Event
      * @param string $sucessFlashMessage
      * @return EntityEventArgs
      */
-    public function setSucessFlashMessage(string $sucessFlashMessage)
+    public function setSucessFlashMessage(string $sucessFlashMessage): EntityEventArgs
     {
         $this->sucessFlashMessage = $sucessFlashMessage;
 
@@ -129,12 +129,11 @@ class EntityEventArgs extends Event
      * @param string $errorFlashMessage
      * @return EntityEventArgs
      */
-    public function setErrorFlashMessage(string $errorFlashMessage)
+    public function setErrorFlashMessage(string $errorFlashMessage): EntityEventArgs
     {
         $this->errorFlashMessage = $errorFlashMessage;
 
         return $this;
     }
-
 
 }

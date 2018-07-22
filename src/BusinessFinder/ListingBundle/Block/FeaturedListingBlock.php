@@ -9,7 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class FeaturedListingBlock extends BaseBlock
 {
-    const NAME = 'listing_featured';
+    public const NAME = 'listing_featured';
 
     /** @var ListingRepository */
     private $repository;
@@ -24,7 +24,7 @@ class FeaturedListingBlock extends BaseBlock
      *
      * @return string
      */
-    public static function getName()
+    public static function getName(): string
     {
         return self::NAME;
     }
@@ -34,7 +34,7 @@ class FeaturedListingBlock extends BaseBlock
      *
      * @return string
      */
-    public function render()
+    public function render(): string
     {
         $listings = $this->repository->findBy(['featured' => true], [], 9);
 

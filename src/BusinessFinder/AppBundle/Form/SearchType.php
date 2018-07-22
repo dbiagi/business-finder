@@ -3,28 +3,32 @@
 namespace BusinessFinder\AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type as FormTypes;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type as FormTypes;
 
-class SearchType extends AbstractType {
+class SearchType extends AbstractType
+{
 
-    const NAME = 'app_bundle_search_type';
+    public const NAME = 'app_bundle_search_type';
 
-    public function buildForm(FormBuilderInterface $builder, array $options) {
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
         $builder
             ->add('terms', FormTypes\SearchType::class);
     }
 
-    public function configureOptions(OptionsResolver $resolver) {
+    public function configureOptions(OptionsResolver $resolver)
+    {
         $resolver->setDefaults([
-            'data_class' => null,
+            'data_class'      => null,
             'csrf_protection' => false,
-            'method' => 'get'
+            'method'          => 'get',
         ]);
     }
 
-    public function getBlockPrefix() {
+    public function getBlockPrefix()
+    {
         return self::NAME;
     }
 }

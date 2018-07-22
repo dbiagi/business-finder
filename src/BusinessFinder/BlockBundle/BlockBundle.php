@@ -12,7 +12,7 @@ class BlockBundle extends Bundle
     /**
      * String that prefix the block service alias.
      */
-    const ALIAS_PREFIX = 'block';
+    public const ALIAS_PREFIX = 'block';
 
     public function build(ContainerBuilder $container)
     {

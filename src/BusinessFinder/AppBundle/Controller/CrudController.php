@@ -5,12 +5,11 @@ namespace BusinessFinder\AppBundle\Controller;
 use BusinessFinder\AppBundle\Event\EntityEventArgs;
 use BusinessFinder\AppBundle\Event\EntityEvents;
 use BusinessFinder\ListingBundle\Entity\Listing;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class CrudController
@@ -23,7 +22,7 @@ class CrudController extends Controller
      * @param string $item
      * @return Response
      */
-    public function newAction(Request $request, $item)
+    public function newAction(Request $request, $item): Response
     {
         $dispatcher = $this->get('event_dispatcher');
 
@@ -68,7 +67,7 @@ class CrudController extends Controller
      * @param int $id
      * @return Response
      */
-    public function editAction(Request $request, $item, $id)
+    public function editAction(Request $request, $item, $id): Response
     {
         $eventArgs = new EntityEventArgs();
         $this->get('event_dispatcher')->dispatch(sprintf(EntityEvents::EDIT_ITEM, $item), $eventArgs);
@@ -103,14 +102,13 @@ class CrudController extends Controller
     }
 
     /**
-     * @Route("/{id}", requirements={"id"="\d+"}, name="app_business_remove")
-     * @Method("DELETE")
+     * @Route("/{id}", requirements={"id"="\d+"}, name="app_business_remove", methods={"DELETE"})
      *
      * @param Request $request
      * @param Listing $business
      * @return RedirectResponse
      */
-    public function removeAction(Request $request, Listing $business)
+    public function removeAction(Request $request, Listing $business): RedirectResponse
     {
         $token = $request->get('_token');
 

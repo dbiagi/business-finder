@@ -5,8 +5,8 @@ namespace BusinessFinder\SearchBundle;
 class SearchEngine
 {
     /** Elasticsearch */
-    const ELASTICSEARCH = 'elasticsearch';
+    public const ELASTICSEARCH = 'elasticsearch';
 
     /** Doctrine */
-    const DOCTRINE = 'doctrine';
+    public const DOCTRINE = 'doctrine';
 }

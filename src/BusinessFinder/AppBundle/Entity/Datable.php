@@ -26,7 +26,7 @@ trait Datable
     /**
      * @return \DateTime
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): \DateTime
     {
         return $this->createdAt;
     }
@@ -35,7 +35,7 @@ trait Datable
      * @param \DateTime $createdAt
      * @return Datable
      */
-    public function setCreatedAt($createdAt)
+    public function setCreatedAt($createdAt): Datable
     {
         $this->createdAt = $createdAt;
 
@@ -45,7 +45,7 @@ trait Datable
     /**
      * @return \DateTime
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): \DateTime
     {
         return $this->updatedAt;
     }
@@ -54,7 +54,7 @@ trait Datable
      * @param \DateTime $updatedAt
      * @return Datable
      */
-    public function setUpdatedAt($updatedAt)
+    public function setUpdatedAt($updatedAt): Datable
     {
         $this->updatedAt = $updatedAt;
 
@@ -64,7 +64,7 @@ trait Datable
     /**
      * @ORM\PrePersist()
      */
-    public function prePersist()
+    public function prePersist(): void
     {
         $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
@@ -73,7 +73,7 @@ trait Datable
     /**
      * @ORM\PreUpdate()
      */
-    public function preUpdate()
+    public function preUpdate(): void
     {
         $this->updatedAt = new \DateTime();
     }

@@ -9,7 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class UpcomingEventsBlock extends BaseBlock
 {
-    const NAME = 'events_upcoming';
+    public const NAME = 'events_upcoming';
 
     /** @var EventRepository */
     private $repository;
@@ -20,26 +20,26 @@ class UpcomingEventsBlock extends BaseBlock
     }
 
     /**
-     * Render a piece of html
-     *
-     * @return string
-     */
-    public function render()
-    {
-        $query = $this->repository->findUpcomingEvents();
-
-        return $this->twig->render('@Event/blocks/upcoming.html.twig', [
-            'events' => $query->getResult()
-        ]);
-    }
-
-    /**
      * Get block name
      *
      * @return string
      */
-    public static function getName()
+    public static function getName(): string
     {
         return self::NAME;
+    }
+
+    /**
+     * Render a piece of html
+     *
+     * @return string
+     */
+    public function render(): string
+    {
+        $query = $this->repository->findUpcomingEvents();
+
+        return $this->twig->render('@Event/blocks/upcoming.html.twig', [
+            'events' => $query->getResult(),
+        ]);
     }
 }

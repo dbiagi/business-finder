@@ -4,8 +4,8 @@ namespace BusinessFinder\AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping\UniqueConstraint;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * BusinessCategory
@@ -16,7 +16,8 @@ use Doctrine\ORM\Mapping\UniqueConstraint;
  * )
  * @ORM\Entity(repositoryClass="BusinessFinder\AppBundle\Repository\CategoryRepository")
  */
-class Category {
+class Category
+{
 
     /**
      * @var int
@@ -49,7 +50,8 @@ class Category {
      */
     private $module;
 
-    function __construct() {
+    public function __construct()
+    {
         $this->businesses = new ArrayCollection();
     }
 
@@ -58,7 +60,8 @@ class Category {
      *
      * @return int
      */
-    public function getId() {
+    public function getId(): int
+    {
         return $this->id;
     }
 
@@ -67,7 +70,8 @@ class Category {
      *
      * @return string
      */
-    public function getName() {
+    public function getName(): string
+    {
         return $this->name;
     }
 
@@ -78,7 +82,8 @@ class Category {
      *
      * @return Category
      */
-    public function setName($name) {
+    public function setName($name): Category
+    {
         $this->name = $name;
 
         return $this;
@@ -89,7 +94,8 @@ class Category {
      *
      * @return string
      */
-    public function getSlug() {
+    public function getSlug(): string
+    {
         return $this->slug;
     }
 
@@ -100,7 +106,8 @@ class Category {
      *
      * @return Category
      */
-    public function setSlug($slug) {
+    public function setSlug($slug): Category
+    {
         $this->slug = $slug;
 
         return $this;
@@ -122,7 +129,7 @@ class Category {
      * @param string $module
      * @return Category
      */
-    public function setModule(string $module)
+    public function setModule(string $module): Category
     {
         $this->module = $module;
 

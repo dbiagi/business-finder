@@ -14,7 +14,7 @@ abstract class BaseBlock implements BlockInterface
      * @return BaseBlock
      * @required
      */
-    public function setTwig(\Twig_Environment $twig)
+    public function setTwig(\Twig_Environment $twig): BaseBlock
     {
         $this->twig = $twig;
 

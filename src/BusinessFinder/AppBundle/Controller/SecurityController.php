@@ -2,11 +2,12 @@
 
 namespace BusinessFinder\AppBundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
-class SecurityController extends Controller {
+class SecurityController extends Controller
+{
 
     /**
      * Página de login
@@ -15,7 +16,8 @@ class SecurityController extends Controller {
      *
      * @return Response
      */
-    public function indexAction() {
+    public function indexAction(): Response
+    {
         $user = $this->getUser();
 
         if ($user) {
@@ -25,4 +27,11 @@ class SecurityController extends Controller {
         return $this->render('pages/login.html.twig');
     }
 
+    /**
+     * @Route("/logout")
+     */
+    public function logout()
+    {
+        throw new \RuntimeException('Should not reach this code');
+    }
 }

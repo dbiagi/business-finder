@@ -9,7 +9,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *
  * @author Diego de Biagi <diegobiagiviana@gmail.com>
  */
-class User implements UserInterface {
+class User implements UserInterface
+{
 
     /** @var string */
     private $username;

@@ -35,7 +35,7 @@ class ListingEventSubscriber implements EventSubscriberInterface
      *
      * @param EntityEventArgs $args
      */
-    public function onNewListing(EntityEventArgs $args)
+    public function onNewListing(EntityEventArgs $args): void
     {
         $args->setEntityClass(Listing::class)
             ->setFormTypeClass(ListingType::class)
@@ -48,7 +48,7 @@ class ListingEventSubscriber implements EventSubscriberInterface
      *
      * @param EntityEventArgs $args
      */
-    public function onEditListing(EntityEventArgs $args)
+    public function onEditListing(EntityEventArgs $args): void
     {
         $args->setEntityClass(Listing::class)
             ->setFormTypeClass(ListingType::class)

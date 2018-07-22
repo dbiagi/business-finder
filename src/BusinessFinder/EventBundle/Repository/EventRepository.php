@@ -13,7 +13,7 @@ class EventRepository extends \Doctrine\ORM\EntityRepository
     /**
      * @return \Doctrine\ORM\Query
      */
-    public function findUpcomingEvents()
+    public function findUpcomingEvents(): \Doctrine\ORM\Query
     {
         $qb = $this->createQueryBuilder('e');
 

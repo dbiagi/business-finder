@@ -10,20 +10,20 @@ class SearchEvents
     /**
      * Fired when no module is specified on search.
      */
-    const GLOBAL_SEARCH = 'search.global';
+    public const GLOBAL_SEARCH = 'search.global';
 
     /**
      * Fired on listing search
      */
-    const LISTING_SEARCH = 'search.listing';
+    public const LISTING_SEARCH = 'search.listing';
 
     /**
      * Fired on event search
      */
-    const EVENT_SEARCH = 'search.event';
+    public const EVENT_SEARCH = 'search.event';
 
     /**
      * Fired on deal search
      */
-    const DEAL_SEARCH = 'search.deal';
+    public const DEAL_SEARCH = 'search.deal';
 }

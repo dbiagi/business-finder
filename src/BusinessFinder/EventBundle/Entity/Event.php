@@ -2,10 +2,11 @@
 
 namespace BusinessFinder\EventBundle\Entity;
 
+use BusinessFinder\AppBundle\Entity\Category;
 use BusinessFinder\AppBundle\Entity\Geolocation;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use BusinessFinder\AppBundle\Entity\Category;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -84,7 +85,7 @@ class Event
      *
      * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
@@ -94,7 +95,7 @@ class Event
      *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): string
     {
         return $this->title;
     }
@@ -106,7 +107,7 @@ class Event
      *
      * @return Event
      */
-    public function setTitle($title)
+    public function setTitle($title): Event
     {
         $this->title = $title;
 
@@ -118,7 +119,7 @@ class Event
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }
@@ -130,7 +131,7 @@ class Event
      *
      * @return Event
      */
-    public function setDescription($description)
+    public function setDescription($description): Event
     {
         $this->description = $description;
 
@@ -142,7 +143,7 @@ class Event
      *
      * @return \DateTime
      */
-    public function getStartAt()
+    public function getStartAt(): \DateTime
     {
         return $this->startAt;
     }
@@ -154,7 +155,7 @@ class Event
      *
      * @return Event
      */
-    public function setStartAt($startAt)
+    public function setStartAt($startAt): Event
     {
         $this->startAt = $startAt;
 
@@ -166,7 +167,7 @@ class Event
      *
      * @return \DateTime
      */
-    public function getEndAt()
+    public function getEndAt(): \DateTime
     {
         return $this->endAt;
     }
@@ -178,7 +179,7 @@ class Event
      *
      * @return Event
      */
-    public function setEndAt($endAt)
+    public function setEndAt($endAt): Event
     {
         $this->endAt = $endAt;
 
@@ -190,7 +191,7 @@ class Event
      *
      * @return bool
      */
-    public function isRecurrent()
+    public function isRecurrent(): bool
     {
         return $this->recurrent;
     }
@@ -202,7 +203,7 @@ class Event
      *
      * @return Event
      */
-    public function setRecurrent($recurrent)
+    public function setRecurrent($recurrent): Event
     {
         $this->recurrent = $recurrent;
 
@@ -214,7 +215,7 @@ class Event
      *
      * @return ArrayCollection
      */
-    public function getCategory()
+    public function getCategory(): Collection
     {
         return $this->category;
     }
@@ -225,7 +226,7 @@ class Event
      * @param Category $category
      * @return Event
      */
-    public function setCategory(Category $category)
+    public function setCategory(Category $category): Event
     {
         $this->category = $category;
 
@@ -263,7 +264,7 @@ class Event
      * @param Geolocation $location
      * @return Event
      */
-    public function setLocation(Geolocation $location)
+    public function setLocation(Geolocation $location): Event
     {
         $this->location = $location;
 

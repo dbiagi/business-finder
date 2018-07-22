@@ -24,10 +24,10 @@ class BlockAliasResolver
      * @return BlockInterface
      * @throws BlockNotFoundException
      */
-    public function resolve($name)
+    public function resolve($name): BlockInterface
     {
         $alias = sprintf('%s_%s', BlockBundle::ALIAS_PREFIX, $name);
-        if(!$this->container->has($alias)) {
+        if (!$this->container->has($alias)) {
             throw new BlockNotFoundException($name);
         }
 

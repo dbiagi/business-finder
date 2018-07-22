@@ -1,0 +1,5 @@
+nelmio_alice:
+    locale: '%env(resolve:LOCALE)%'
+    seed: 1
+hautelook_alice:
+    fixtures_path: 'config/fixtures'

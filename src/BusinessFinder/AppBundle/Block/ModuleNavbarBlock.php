@@ -3,21 +3,28 @@
 namespace BusinessFinder\AppBundle\Block;
 
 use BusinessFinder\BlockBundle\Block\BaseBlock;
-use BusinessFinder\BlockBundle\Block\BlockInterface;
 
 class ModuleNavbarBlock extends BaseBlock
 {
-    const NAME = 'modules_navbar';
+    public const NAME = 'modules_navbar';
 
     /**
      * {@inheritdoc}
      */
-    public function render()
+    public static function getName(): string
+    {
+        return self::NAME;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function render(): string
     {
         $modules = [
             [
-                'name' => 'Home',
-                'route' => 'home'
+                'name'  => 'Home',
+                'route' => 'home',
             ],
             [
                 'name'  => 'Listing',
@@ -34,15 +41,7 @@ class ModuleNavbarBlock extends BaseBlock
         ];
 
         return $this->twig->render(':blocks:navbar.html.twig', [
-            'modules' => $modules
+            'modules' => $modules,
         ]);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public static function getName()
-    {
-        return self::NAME;
     }
 }

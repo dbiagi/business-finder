@@ -39,7 +39,7 @@ abstract class AbstractSearchEventArgs
      * @param array $modules
      * @return AbstractSearchEventArgs
      */
-    public function setModules(array $modules)
+    public function setModules(array $modules): AbstractSearchEventArgs
     {
         $this->modules = $modules;
 
@@ -62,7 +62,7 @@ abstract class AbstractSearchEventArgs
      * @param string $terms
      * @return AbstractSearchEventArgs
      */
-    public function setTerms(string $terms)
+    public function setTerms(string $terms): AbstractSearchEventArgs
     {
         $this->terms = $terms;
 
@@ -85,7 +85,7 @@ abstract class AbstractSearchEventArgs
      * @param string $engine
      * @return AbstractSearchEventArgs
      */
-    public function setEngine(string $engine)
+    public function setEngine(string $engine): AbstractSearchEventArgs
     {
         $this->engine = $engine;
 
@@ -108,7 +108,7 @@ abstract class AbstractSearchEventArgs
      * @param array $results
      * @return AbstractSearchEventArgs
      */
-    public function setResults(array $results)
+    public function setResults(array $results): AbstractSearchEventArgs
     {
         $this->results = $results;
 

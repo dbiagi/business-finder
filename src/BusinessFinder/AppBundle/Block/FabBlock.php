@@ -9,14 +9,14 @@ use BusinessFinder\BlockBundle\Block\BaseBlock;
  */
 class FabBlock extends BaseBlock
 {
-    const NAME = 'fab';
+    public const NAME = 'fab';
 
     /**
      * Get block name
      *
      * @return string
      */
-    public static function getName()
+    public static function getName(): string
     {
         return self::NAME;
     }
@@ -26,7 +26,7 @@ class FabBlock extends BaseBlock
      *
      * @return string
      */
-    public function render()
+    public function render(): string
     {
         return $this->twig->render('blocks/fab.html.twig');
     }

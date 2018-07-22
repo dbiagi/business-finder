@@ -3,17 +3,14 @@
 namespace BusinessFinder\AppBundle\Controller;
 
 use BusinessFinder\AppBundle\Form\SearchType;
-use BusinessFinder\ListingBundle\Entity\Listing;
-use BusinessFinder\ListingBundle\Repository\ListingRepository;
-use Knp\Component\Pager\PaginatorInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 class IndexController extends Controller
 {
-    const LIMIT_PER_PAGE = 9;
+    public const LIMIT_PER_PAGE = 9;
 
     /**
      * Homepage
@@ -22,7 +19,7 @@ class IndexController extends Controller
      *
      * @Route("/", name="home")
      */
-    public function indexAction()
+    public function indexAction(): Response
     {
         return $this->render('pages/home.html.twig');
     }
@@ -33,7 +30,7 @@ class IndexController extends Controller
      *
      * @Route("/search", name="global_search")
      */
-    public function searchAction(Request $request)
+    public function searchAction(Request $request): Response
     {
         $data = $request->get(SearchType::NAME);
 

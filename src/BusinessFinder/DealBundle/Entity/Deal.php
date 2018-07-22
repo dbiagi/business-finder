@@ -4,6 +4,7 @@ namespace BusinessFinder\DealBundle\Entity;
 
 use BusinessFinder\AppBundle\Entity\Category;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -15,11 +16,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Deal
 {
-    const DISCOUNT_VALUE = 'value';
+    public const DISCOUNT_VALUE = 'value';
 
-    const DISCOUNT_PERCENT = 'percent';
+    public const DISCOUNT_PERCENT = 'percent';
 
-    const DISCOUNT_CUSTOM_VALUE = 'custom';
+    public const DISCOUNT_CUSTOM_VALUE = 'custom';
 
     /**
      * @var int
@@ -84,7 +85,7 @@ class Deal
      *
      * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
@@ -94,7 +95,7 @@ class Deal
      *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): string
     {
         return $this->title;
     }
@@ -106,7 +107,7 @@ class Deal
      *
      * @return Deal
      */
-    public function setTitle($title)
+    public function setTitle($title): Deal
     {
         $this->title = $title;
 
@@ -118,7 +119,7 @@ class Deal
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }
@@ -130,7 +131,7 @@ class Deal
      *
      * @return Deal
      */
-    public function setDescription($description)
+    public function setDescription($description): Deal
     {
         $this->description = $description;
 
@@ -142,7 +143,7 @@ class Deal
      *
      * @return float
      */
-    public function getDiscount()
+    public function getDiscount(): float
     {
         return $this->discount;
     }
@@ -154,7 +155,7 @@ class Deal
      *
      * @return Deal
      */
-    public function setDiscount($discount)
+    public function setDiscount($discount): Deal
     {
         $this->discount = $discount;
 
@@ -166,7 +167,7 @@ class Deal
      *
      * @return string
      */
-    public function getDiscountType()
+    public function getDiscountType(): string
     {
         return $this->discountType;
     }
@@ -178,7 +179,7 @@ class Deal
      *
      * @return Deal
      */
-    public function setDiscountType($discountType)
+    public function setDiscountType($discountType): Deal
     {
         $this->discountType = $discountType;
 
@@ -190,7 +191,7 @@ class Deal
      *
      * @return string
      */
-    public function getPrice()
+    public function getPrice(): string
     {
         return $this->price;
     }
@@ -202,7 +203,7 @@ class Deal
      *
      * @return Deal
      */
-    public function setPrice($price)
+    public function setPrice($price): Deal
     {
         $this->price = $price;
 
@@ -214,7 +215,7 @@ class Deal
      *
      * @return ArrayCollection
      */
-    public function getCategory()
+    public function getCategory(): Collection
     {
         return $this->category;
     }
