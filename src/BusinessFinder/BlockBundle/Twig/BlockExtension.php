@@ -21,9 +21,11 @@ class BlockExtension extends \Twig_Extension
         ];
     }
 
-    public function render($alias): string
+    public function render($alias, array $options = []): string
     {
         $block = $this->resolver->resolve($alias);
+
+        $block->setOptions($options);
 
         return $block->render();
     }

@@ -2,23 +2,7 @@
 
 {% block body %}
     {% block navbar %}
-        <nav>
-            <div class="nav-wrapper">
-                <ul id="nav-mobile" class="left">
-                    <li><a href="{{ path('home') }}">{{ project_name }}</a></li>
-                    {% if is_granted('ROLE_USER') %}
-                        <li>Olá, {{ app.user.username }}</li>
-                        <li>
-                            <a href="{{ path('logout') }}" title="Sair">
-                                <i class="material-icons">input</i>
-                            </a>
-                        </li>
-                    {% else %}
-                        <li><a href="{{ path('login') }}">Login</a></li>
-                    {% endif %}
-                </ul>
-            </div>
-        </nav>
+        {{ block_render('navigation_with_modules') }}
     {% endblock %}
 
     <div class="container">

@@ -19,12 +19,10 @@ class SearchBarBlock extends BaseBlock
     }
 
     /**
-     * Render a piece of html
-     *
-     * @return string
+     * {@inheritdoc}
      */
     public function render(): string
     {
-        // TODO: Implement render() method.
+        return $this->twig->render('@Search/block/searchbar.html.twig');
     }
 }

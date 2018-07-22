@@ -6,7 +6,7 @@ use BusinessFinder\BlockBundle\Block\BaseBlock;
 
 class ModuleNavbarBlock extends BaseBlock
 {
-    public const NAME = 'modules_navbar';
+    public const NAME = 'navigation_with_modules';
 
     /**
      * {@inheritdoc}
@@ -40,7 +40,7 @@ class ModuleNavbarBlock extends BaseBlock
             ],
         ];
 
-        return $this->twig->render(':blocks:navbar.html.twig', [
+        return $this->twig->render('@App/blocks/navigation_with_modules.html.twig', [
             'modules' => $modules,
         ]);
     }

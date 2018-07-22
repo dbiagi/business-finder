@@ -6,6 +6,8 @@ use BusinessFinder\BlockBundle\Block\BaseBlock;
 use BusinessFinder\ListingBundle\Entity\Listing;
 use BusinessFinder\ListingBundle\Repository\ListingRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use function React\Promise\resolve;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class FeaturedListingBlock extends BaseBlock
 {
@@ -30,16 +32,23 @@ class FeaturedListingBlock extends BaseBlock
     }
 
     /**
-     * Render a piece of html
-     *
-     * @return string
+     * {@inheritdoc}
      */
     public function render(): string
     {
-        $listings = $this->repository->findBy(['featured' => true], [], 9);
+        $options = $this->getOptions();
+
+        $listings = $this->repository->findBy(['featured' => true], [], $options['count']);
 
         return $this->twig->render('@Listing/blocks/featured.html.twig', [
             'listings' => $listings,
+        ]);
+    }
+
+    protected function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefaults([
+            'count' => 10
         ]);
     }
 }

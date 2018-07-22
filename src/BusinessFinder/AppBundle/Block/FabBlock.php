@@ -22,9 +22,7 @@ class FabBlock extends BaseBlock
     }
 
     /**
-     * Render a piece of html
-     *
-     * @return string
+     * {@inheritdoc}
      */
     public function render(): string
     {

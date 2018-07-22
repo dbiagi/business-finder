@@ -12,9 +12,13 @@ interface BlockInterface
     public static function getName(): string;
 
     /**
-     * Render a piece of html
+     * Return a piece of html
      *
      * @return string
      */
     public function render(): string;
+
+    public function getOptions(): array;
+
+    public function setOptions(array $options): void;
 }
