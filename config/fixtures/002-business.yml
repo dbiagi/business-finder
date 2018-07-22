@@ -1,0 +1,13 @@
+BusinessFinder\ListingBundle\Entity\Listing:
+    listing_{1..100}:
+        title: '<company()>'
+        phone: '<phoneNumber()>'
+        address: '<streetAddress()>'
+        zipCode: '<numerify("17######")>'
+        city: '<city()>'
+        state: 'AA'
+        featured: '20%? 1: 0'
+        description: '<sentence(10)>'
+        __calls:
+            - addCategory: ['@listing_category_*']
+            - addCategory: ['@listing_category_*']

@@ -1,0 +1,9 @@
+services:
+    _defaults:
+        autoconfigure: true
+        autowire: true
+        public: false
+
+    BusinessFinder\ListingBundle\:
+        resource: '../../*'
+        exclude: '../../{Entity, Repository}'

@@ -1,6 +1,4 @@
-FROM php:7-fpm
-
-ADD ./conf /usr/local/etc/php/conf.d
+FROM php:7.2-apache
 
 # Install services
 RUN apt-get update \
@@ -20,7 +18,6 @@ RUN apt-get update \
 # Install composer
 RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
     && curl -o /tmp/composer-setup.sig https://composer.github.io/installer.sig \
-    # Make sure we're installing what we think we're installing!
     && php -r "if (hash('SHA384', file_get_contents('/tmp/composer-setup.php')) !== trim(file_get_contents('/tmp/composer-setup.sig'))) { unlink('/tmp/composer-setup.php'); echo 'Invalid installer' . PHP_EOL; exit(1); }" \
     && php /tmp/composer-setup.php --no-ansi --install-dir=/usr/local/bin --filename=composer --snapshot \
     && rm -f /tmp/composer-setup.*
@@ -41,11 +38,3 @@ RUN mkdir /var/www/.composer/cache -p
 
 RUN usermod -u 1000 www-data \
     && chown www-data:www-data /var/www -R
-
-USER www-data
-
-# @TODO Create bash_aliases file
-RUN echo 'alias s3="php bin/console"' >> ~/.bashrc
-
-# allow debug console commands
-RUN export PHP_IDE_CONFIG="serverName=docker"

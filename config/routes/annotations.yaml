@@ -1,0 +1,15 @@
+appbundle:
+    resource: "@AppBundle/Controller"
+    type: annotation
+
+listingbundle:
+    resource: "@ListingBundle/Controller"
+    type: annotation
+
+dealbundle:
+    resource: "@DealBundle/Controller"
+    type: annotation
+
+eventbundle:
+    resource: "@EventBundle/Controller"
+    type: annotation

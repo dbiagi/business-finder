@@ -1,0 +1,90 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    {#{{ render(controller('AppBundle:PublicController/Index:search', [app.request])) }}#}
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class="fixed-action-btn">
+            <a class="btn-floating btn-large red" href="{{ path('app_business_add') }}">
+                <i class="large material-icons">add</i>
+            </a>
+        </div>
+    {% endif %}
+    <h3>Empresas encontradas: {{ businesses.totalItemCount }}</h3>
+    <div class="row">
+        {% for business in businesses %}
+            <div class="col s12 m3 l4">
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" src="https://fakeimg.pl/300x300/">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">
+                            {{ business.title }}<i class="material-icons right">more_vert</i>
+                        </span>
+                        <ul>
+                            <li>Cidade: {{ business.city }} / {{ business.state }}</li>
+                            <li>Fone: {{ business.phone }}</li>
+                        </ul>
+                    </div>
+
+                    <div class="card-reveal">
+                        <h5 class="card-title grey-text text-darken-4">
+                            {{ business.title }}<i class="material-icons right">close</i>
+                        </h5>
+                        <hr/>
+                        <div class="row">
+                            <div class="col m4"><strong>Fone</strong></div>
+                            <div class="col m8">{{ business.phone }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col m4"><strong>Cidade</strong></div>
+                            <div class="col m8">{{ business.city }}/{{ business.state }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col m4"><strong>Endereço</strong></div>
+                            <div class="col m8">{{ business.address }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col m4"><strong>CEP</strong></div>
+                            <div class="col m8">{{ business.zipCode }}</div>
+                        </div>
+
+                        <div class="row">
+                            <h5>Categorias</h5>
+                            <ul>
+                                {% for category in business.categories %}
+                                    <li>{{ category.name }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                        <p class="justify"><strong>Descrição:</strong> {{ business.description }}</p>
+                    </div>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <div class="card-action">
+                            <div class="row">
+                                <div class="col s2 right">
+                                    <a href="{{ path('app_business_edit', {id:business.id}) }}" class="btn btn-floating blue">
+                                        <i class="material-icons">edit</i>
+                                    </a>
+                                </div>
+                                <div class="col s2 right">
+                                    <form action="{{ path('app_business_remove', {id:business.id}) }}" method="post">
+                                        <input type="hidden" name="_token" value="{{ csrf_token('business_remove') }}">
+                                        <input type="hidden" name="_method" value="delete">
+                                        <button class="btn btn-floating red" type="submit">
+                                            <i class="material-icons">delete</i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="center">
+        {{ knp_pagination_render(businesses) }}
+    </div>
+{% endblock %}

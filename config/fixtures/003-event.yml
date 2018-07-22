@@ -1,0 +1,10 @@
+BusinessFinder\EventBundle\Entity\Event:
+    event_{1..100}:
+        title: '<sentence(5)>'
+        description: '<sentence(20)>'
+        startAt: '<dateTimeBetween("-5 months", "+2 years")>'
+        endAt: '<dateTimeBetween("now", "+2 years")>'
+        recurrent: '20%? 1: 0'
+        __calls:
+            - addCategory: ['@event_category_*']
+            - addCategory: ['@event_category_*']
