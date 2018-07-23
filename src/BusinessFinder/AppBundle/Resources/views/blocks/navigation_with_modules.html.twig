@@ -1,16 +1,29 @@
-<nav>
-    <div class="nav-wrapper">
-        <ul id="nav-mobile" class="left">
-            <li><a href="{{ path('home') }}">{{ project_name }}</a></li>
+<nav class="navbar navbar-expand-lg bg-primary navbar-dark">
+    <a class="navbar-brand" href="{{ path('home') }}">{{ project_name }}</a>
+
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+            {% for module in modules %}
+                {% set isActive = app.request.attributes.get('_route') == module.route %}
+                <li class="nav-item {{ isActive ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ path(module.route) }}">{{ module.name|trans }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <ul class="navbar-nav mr-auto justify-content-end">
             {% if is_granted('ROLE_USER') %}
-                <li>Olá, {{ app.user.username }}</li>
-                <li>
-                    <a href="{{ path('logout') }}" title="Sair">
-                        <i class="material-icons">input</i>
+                <li class="nav-item">Olá, {{ app.user.username }}</li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('logout') }}" title="{{ 'Logout' | trans }}">
+                        <i class="fa fa-sign-out-alt">input</i>
                     </a>
                 </li>
             {% else %}
-                <li><a href="{{ path('login') }}">Login</a></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('login') }}" title="Login">
+                        <i class="fa fa-user"></i>
+                    </a>
+                </li>
             {% endif %}
         </ul>
     </div>

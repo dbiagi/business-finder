@@ -23,10 +23,6 @@ class ModuleNavbarBlock extends BaseBlock
     {
         $modules = [
             [
-                'name'  => 'Home',
-                'route' => 'home',
-            ],
-            [
                 'name'  => 'Listing',
                 'route' => 'listing_home',
             ],

@@ -11,7 +11,10 @@
         "build": "encore production"
     },
     "dependencies": {
+        "bootstrap": "^4.1.2",
+        "font-awesome": "^4.7.0",
         "jquery": "^3.3.1",
-        "materialize-css": "^0.100.2"
+        "node-sass": "^4.9.2",
+        "sass-loader": "^7.0.3"
     }
 }
