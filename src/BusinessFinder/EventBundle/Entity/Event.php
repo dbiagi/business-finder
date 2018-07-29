@@ -2,7 +2,9 @@
 
 namespace BusinessFinder\EventBundle\Entity;
 
+use BusinessFinder\AppBundle\Entity\Address;
 use BusinessFinder\AppBundle\Entity\Category;
+use BusinessFinder\AppBundle\Entity\DateTimeInfo;
 use BusinessFinder\AppBundle\Entity\Geolocation;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -14,9 +16,12 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="event")
  * @ORM\Entity(repositoryClass="BusinessFinder\EventBundle\Repository\EventRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Event
 {
+    use DateTimeInfo;
+
     /**
      * @var int
      *
@@ -71,9 +76,16 @@ class Event
 
     /**
      * @var Geolocation
-     * @ORM\Column(type="geolocation", nullable=true)
+     *
+     * @ORM\Embedded(class="BusinessFinder\AppBundle\Entity\Geolocation")
      */
     private $location;
+
+    /**
+     * @var Address
+     * @ORM\Embedded(class="BusinessFinder\AppBundle\Entity\Address")
+     */
+    private $address;
 
     public function __construct()
     {
@@ -267,6 +279,26 @@ class Event
     public function setLocation(Geolocation $location): Event
     {
         $this->location = $location;
+
+        return $this;
+    }
+
+    /**
+     * @return Address
+     */
+    public function getAddress(): Address
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param Address $address
+     *
+     * @return Event
+     */
+    public function setAddress(Address $address): Event
+    {
+        $this->address = $address;
 
         return $this;
     }

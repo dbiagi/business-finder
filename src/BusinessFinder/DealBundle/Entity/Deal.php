@@ -3,6 +3,7 @@
 namespace BusinessFinder\DealBundle\Entity;
 
 use BusinessFinder\AppBundle\Entity\Category;
+use BusinessFinder\AppBundle\Entity\DateTimeInfo;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -13,9 +14,12 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="deal")
  * @ORM\Entity(repositoryClass="BusinessFinder\DealBundle\Repository\DealRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Deal
 {
+    use DateTimeInfo;
+
     public const DISCOUNT_VALUE = 'value';
 
     public const DISCOUNT_PERCENT = 'percent';

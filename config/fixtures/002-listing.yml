@@ -2,10 +2,7 @@ BusinessFinder\ListingBundle\Entity\Listing:
     listing_{1..100}:
         title: '<company()>'
         phone: '<phoneNumber()>'
-        address: '<streetAddress()>'
-        zipCode: '<numerify("17######")>'
-        city: '<city()>'
-        state: 'AA'
+        address: '@address_<numberBetween(1, 50)>'
         featured: '20%? 1: 0'
         description: '<sentence(10)>'
         __calls:

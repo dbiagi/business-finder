@@ -4,6 +4,7 @@ BusinessFinder\EventBundle\Entity\Event:
         description: '<sentence(20)>'
         startAt: '<dateTimeBetween("-5 months", "+2 years")>'
         endAt: '<dateTimeBetween("now", "+2 years")>'
+        address: '@address_<numberBetween(1, 50)>'
         recurrent: '20%? 1: 0'
         __calls:
             - addCategory: ['@event_category_*']

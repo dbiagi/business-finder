@@ -8,18 +8,21 @@ use Doctrine\ORM\Mapping as ORM;
  * Class DateTrait
  *
  * @ORM\HasLifecycleCallbacks()
+ * @ORM\Embeddable()
  */
-trait Datable
+trait DateTimeInfo
 {
     /**
      * @var \DateTime
-     * @ORM\Column(type="datetime")
+     *
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $createdAt;
 
     /**
      * @var \DateTime
-     * @ORM\Column(type="datetime")
+     *
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $updatedAt;
 
@@ -33,9 +36,10 @@ trait Datable
 
     /**
      * @param \DateTime $createdAt
-     * @return Datable
+     *
+     * @return self
      */
-    public function setCreatedAt($createdAt): Datable
+    public function setCreatedAt($createdAt): self
     {
         $this->createdAt = $createdAt;
 
@@ -52,9 +56,10 @@ trait Datable
 
     /**
      * @param \DateTime $updatedAt
-     * @return Datable
+     *
+     * @return self
      */
-    public function setUpdatedAt($updatedAt): Datable
+    public function setUpdatedAt($updatedAt): self
     {
         $this->updatedAt = $updatedAt;
 

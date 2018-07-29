@@ -1,0 +1,6 @@
+BusinessFinder\AppBundle\Entity\Address:
+    address_{1..50}:
+        street: '<streetName()>'
+        zipCode: '<numerify("17######")>'
+        city: '<city()>'
+        state: 'AA'

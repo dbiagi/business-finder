@@ -2,8 +2,9 @@
 
 namespace BusinessFinder\ListingBundle\Entity;
 
+use BusinessFinder\AppBundle\Entity\Address;
 use BusinessFinder\AppBundle\Entity\Category;
-use BusinessFinder\AppBundle\Entity\Datable;
+use BusinessFinder\AppBundle\Entity\DateTimeInfo;
 use BusinessFinder\AppBundle\Entity\Geolocation;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -19,7 +20,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Listing
 {
-    use Datable;
+    use DateTimeInfo;
 
     /**
      * @var int
@@ -53,46 +54,6 @@ class Listing
     /**
      * @var string
      *
-     * @ORM\Column(name="address", type="string", length=255)
-     * @Assert\NotBlank()
-     * @Assert\NotNull()
-     * @Assert\Length(min="3", max="255")
-     */
-    private $address;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="zipCode", type="string", length=8)
-     * @Assert\NotBlank()
-     * @Assert\NotNull()
-     * @Assert\Length(min="8", max="8")
-     */
-    private $zipCode;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="city", type="string", length=255)
-     * @Assert\NotBlank()
-     * @Assert\NotNull()
-     * @Assert\Length(min="3", max="255")
-     */
-    private $city;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="state", type="string", length=2)
-     * @Assert\NotBlank()
-     * @Assert\NotNull()
-     * @Assert\Length(min="2", max="2")
-     */
-    private $state;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="description", type="text")
      * @Assert\NotBlank()
      * @Assert\NotNull()
@@ -108,13 +69,22 @@ class Listing
     private $categories;
 
     /**
+     * @var Address
+     *
+     * @ORM\Embedded(class="BusinessFinder\AppBundle\Entity\Address")
+     */
+    private $address;
+
+    /**
      * @var Geolocation
-     * @ORM\Column(type="geolocation", nullable=true)
+     *
+     * @ORM\Embedded(class="BusinessFinder\AppBundle\Entity\Geolocation")
      */
     private $location;
 
     /**
      * @var boolean
+     *
      * @ORM\Column(type="boolean")
      */
     private $featured = false;
@@ -178,102 +148,6 @@ class Listing
     public function setPhone($phone): Listing
     {
         $this->phone = $phone;
-
-        return $this;
-    }
-
-    /**
-     * Get address
-     *
-     * @return string
-     */
-    public function getAddress(): string
-    {
-        return $this->address;
-    }
-
-    /**
-     * Set address
-     *
-     * @param string $address
-     *
-     * @return Listing
-     */
-    public function setAddress($address): Listing
-    {
-        $this->address = $address;
-
-        return $this;
-    }
-
-    /**
-     * Get zipCode
-     *
-     * @return string
-     */
-    public function getZipCode(): string
-    {
-        return $this->zipCode;
-    }
-
-    /**
-     * Set zipCode
-     *
-     * @param string $zipCode
-     *
-     * @return Listing
-     */
-    public function setZipCode($zipCode): Listing
-    {
-        $this->zipCode = $zipCode;
-
-        return $this;
-    }
-
-    /**
-     * Get city
-     *
-     * @return string
-     */
-    public function getCity(): string
-    {
-        return $this->city;
-    }
-
-    /**
-     * Set city
-     *
-     * @param string $city
-     *
-     * @return Listing
-     */
-    public function setCity($city): Listing
-    {
-        $this->city = $city;
-
-        return $this;
-    }
-
-    /**
-     * Get uf
-     *
-     * @return string
-     */
-    public function getState(): string
-    {
-        return $this->state;
-    }
-
-    /**
-     * Set uf
-     *
-     * @param string $state
-     *
-     * @return Listing
-     */
-    public function setState($state): Listing
-    {
-        $this->state = $state;
 
         return $this;
     }
@@ -368,6 +242,44 @@ class Listing
     public function setFeatured(bool $featured): Listing
     {
         $this->featured = $featured;
+
+        return $this;
+    }
+
+    /**
+     * @return Address
+     */
+    public function getAddress(): Address
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param Address $address
+     * @return $this
+     */
+    public function setAddress(Address $address) {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * @return DateTimeInfo
+     */
+    public function getDateTimeInfo(): DateTimeInfo
+    {
+        return $this->dateTimeInfo;
+    }
+
+    /**
+     * @param DateTimeInfo $dateTimeInfo
+     *
+     * @return Listing
+     */
+    public function setDateTimeInfo(DateTimeInfo $dateTimeInfo): Listing
+    {
+        $this->dateTimeInfo = $dateTimeInfo;
 
         return $this;
     }

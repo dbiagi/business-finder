@@ -6,15 +6,24 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Class Geolocation
+ *
  * @package BusinessFinder\AppBundle\Entity
  * @ORM\Embeddable()
  */
 class Geolocation
 {
-    /** @var float */
+    /**
+     * @var float
+     *
+     * @ORM\Column(type="float", nullable=true)
+     */
     private $latitude;
 
-    /** @var float */
+    /**
+     * @var float
+     *
+     * @ORM\Column(type="float", nullable=true)
+     */
     private $longitude;
 
     public function __construct($latitude, $longitude)
