@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: diego
@@ -21,17 +21,7 @@ class HelperExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_Function('print_fab', [$this, 'getFab']),
-        ];
-    }
 
-    /**
-     * Get the default floating action buttons.
-     *
-     * @return string
-     */
-    public function getFab(): string
-    {
-        return $this->environment->render('blocks/fab.html.twig');
+        ];
     }
 }

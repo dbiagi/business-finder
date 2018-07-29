@@ -1,7 +1,14 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace BusinessFinder\AppBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Class Geolocation
+ * @package BusinessFinder\AppBundle\Entity
+ * @ORM\Embeddable()
+ */
 class Geolocation
 {
     /** @var float */

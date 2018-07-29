@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 use BusinessFinder\Kernel;
 use Symfony\Component\Debug\Debug;

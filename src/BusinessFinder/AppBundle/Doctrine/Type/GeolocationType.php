@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace BusinessFinder\AppBundle\Doctrine\Type;
 
@@ -31,7 +31,11 @@ class GeolocationType extends Type
      */
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {
-        list($longitude, $latitude) = sscanf($value, 'POINT(%f %f)');
+        if(!$value) {
+            return null;
+        }
+
+        [$longitude, $latitude] = sscanf($value, 'POINT(%f %f)');
 
         return new Geolocation($latitude, $longitude);
     }
